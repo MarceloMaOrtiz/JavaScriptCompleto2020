@@ -2,7 +2,7 @@ let dobro = function (a){
     return 2*a
 }
 
-// Funções Arros são anônimas, então é necessário armazaná-la em uma variável para chamá-la
+// Funções Arrows são anônimas, então é necessário armazaná-la em uma variável para chamá-la
 dobro = (a) => {
     return 2*a
 }
