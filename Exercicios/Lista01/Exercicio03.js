@@ -1,3 +1,5 @@
+// 03)​ Crie uma função que recebe dois parâmetros, base e expoente, e retorne a base elevada ao expoente.
+
 let eleva = (base, expoente) => console.log(`${base}^${expoente} = ${Math.pow(base, expoente)}`);
     
 
