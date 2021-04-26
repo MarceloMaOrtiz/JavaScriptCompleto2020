@@ -1,0 +1,1 @@
+Evitar utilizar console.log() dentro das funções, procurar retornar sempre dados.
