@@ -5,7 +5,7 @@
 //         maiorOuIgual(5, 1) // retornará false
 
 const maiorOuIgual = function(num1, num2){
-    if (typeof(num1) === typeof(num2))
+    if (typeof num1 === typeof num2)
         return num1 >= num2 ? true : false
     else
         return false

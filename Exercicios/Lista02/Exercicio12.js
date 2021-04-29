@@ -19,6 +19,13 @@
 // Object.is(removerPropriedade(objeto, "descricao"), objeto)
 // Retornará false se o objeto não for o mesmo.
 
+// Outra solução possível, mais curta, utilizando assign
+// function removerPropriedade(objeto, nomeDaPropriedade) {
+//     const copia = Object.assign({}, objeto)
+//     delete copia[nomeDaPropriedade]
+//     return copia
+// }
+
 const cloneObjeto = function(objeto) {
     const newObjeto = new Object
     

@@ -11,6 +11,11 @@
 //             preco: 12000
 //         }) // irá retornar [["codigo", 11111], ["preco", 12000]]
 
+// Forma mais simples de resolver
+// function objetoParaArray(objeto) {
+//     return Object.entries(objeto)
+// }
+
 const objeto1 = { nome: "Maria", profissao: "Desenvolvedora de software" }
 const objeto2 = { codigo: 11111, preco: 12000 }
 
