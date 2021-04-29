@@ -8,7 +8,7 @@
 #### Automaticamenete irá responder sim para todas as perguntas e irá gerar o package.json
 - $ npm init -y
 
-### O package.json, além de descrever o projeto. Um dos principais objetivos é informar quais são as
+### O package.json, além de descrever o projeto, possui como principal objetivo informar quais são as
 ### bibliotecas necessárias para o projeto
 
 ## Em seguida foi utilizado
@@ -25,7 +25,7 @@
 ### Dentro do package.json temos "dependencies": { "axios": "0.21.1" } -> sem nada está bloqueando qualquer update
 ##### bloqueia qualquer update x.y.z -> x = major, y = minor, z = fix
 
-#### É possível instalar dependencias somente para desenvolvimentos, acrescentando o dev
+#### É possível instalar dependencias somente para desenvolvimento, acrescentando o dev
 - $ npm i --save-dev axios
 
 ### O arquivo package-lock.json deve ir para o repositório, ele escreve o package de forma mais precisa
@@ -35,15 +35,15 @@
 ### Nesse momento a pasta node_modules foi excluida
 #### O arquivo principal no package.json foi alterado de index.js para funcionarios.js
 - "main": "funcionario.js",
-### Foi adicionado nos scripts o "start" e o "dev" para sempre que executado, executar juntamento o nodemon funcionario.js,
-#### já que alteramos a "main", e ao alterar o arquivo e salvar o programa é restartado
+#### Foi adicionado nos scripts o "start" e o "dev", para sempre que executado executar nodemon funcionarios.js,
+#### já que alteramos a "main". Com isso ao alterar o arquivo e salvar, o programa é restartado
 - "scripts": {
     "start": "nodemon",
     "dev": "nodemon",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
 
-#### Para refazer a pasta node_modules, utilizando o package.json que possue as dependencias utilizamos o comando
+#### Para refazer a pasta node_modules utilizando o package.json que possue as dependencias utilizamos o comando
 - $ npm i
 
 ### Para iniciliazar o projeto a partir do package.json, utilizando assim os scripts feitos com o "nodemon", utilizamos o comando
