@@ -15,9 +15,10 @@ fs.readFile(caminho, 'utf-8', (err, conteudo) => {
     }
 })
 
-// Sincono... Porém uma forma muito mais simples de ler aquivo do formato JSON
+// Sincrono... Porém uma forma muito mais simples de ler aquivo do formato JSON
 const config = require('./arquivo.json') // Obrigatório passar o formato nesse caso
-console.log(config.db) // OBS: Esse console foi impresso antes do presente no readFile, por conta da assincronicidade
+// OBS: Esse console foi impresso antes do que esta presente no readFile, por conta da assincronicidade
+console.log(config.db) 
 
 // Leitura de pasta
 fs.readdir(__dirname, (err, arquivos) => { // o __ é uma constante que está presente em todos os módulos do node
