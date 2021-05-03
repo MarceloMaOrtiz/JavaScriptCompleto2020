@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <!--
+            Esse arquivo será utilizado como raiz dos exercícios.
+            Será utilizado um script, para pegar outros HTML, via Ajax,
+            e inserir nessa página.
+            O objetivo disso é não ficar repetindo a estrutura padrão de uma
+            página HTML e com isso trabalharmos somente com o conteúdo das aulas
+            nos outros HTMLs
+        -->
+        <h1>Exercícios HTML</h1>
+    </header>
+    <nav>
+        <a href="exercicios/teste.html" wm-nav>00 - Teste</a>
+    </nav>
+    <section id="conteudo"></section>
+    <footer>
+        <br>
+        Curso de Web Moderno
+    </footer>
+    <script> // O que estiver dentro do script, será código JavaScript
+            
+        // A ideia inicial é interceptar o comportamente padrão do clique no href do exercicio
+        // para que não leve para a outra página, e sim tenha um comportamento diferente
+        // Por estarmos utilizando o forEach, será criada uma função para cada um dos <a> ou <wm-nav>
+        // document.querySelectorAll('a').forEach( link => { // Nesse caso utiliza todos os <a>
+        document.querySelectorAll('[wm-nav]').forEach( link => { // Nesse caso pegamos somente as tag com o atributo wm-nav
+            // console.log(link)
+            const conteudo = document.getElementById('conteudo')
+            link.onclick = function(e) {
+                e.preventDefault()
+                // console.log('Ação!')
+                // Como a função getElementById já diz ser um ID não é necessário utilizar #
+                fetch(link.href) // Baseado em promise, faz uma requisição Ajax sem precisar de Jquery ou outra Library
+                    .then(resp => resp.text()) // O primeiro then está recebendo o texto
+                    .then(html => conteudo.innerHTML = html) // Substitui o conteudo da section conteudo
+            }
+        })
+    </script>
+</body>
+</html>

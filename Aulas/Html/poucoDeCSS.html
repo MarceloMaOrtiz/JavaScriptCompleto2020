@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <title>Um Pouco de CSS</title>
+        <!-- No link podemos importar um arquivo, nesse caso estamos importante o poucoDeCSS.css -->
+        <link rel="stylesheet" href="poucoDeCSS.css" />
+        <!-- 
+            Dentro do Style temos código CSS
+            Existe três formas básicas de conectar um CSS a um HTML:
+            1- A partir da própria Tag
+                Isso vai alterar todas as tags
+                Só utilizando o nome da tag
+            2- Referenciar a partir do ID
+                ID tem o intuito de ser único dentro de uma página inteira
+                Esse exemplo está dentro do poucoDeCSS.css
+                Utilizando # antes do ID
+            3- Referenciar a partir de uma classe
+                Essa pode ser utilizada para aplicar mais de uma vez dentro da página
+                Utilizando . antes do nome da classe
+        -->
+        <style>
+            /*comentário dentro do style*/
+            /*Utilizar ctrl+space ajuda a mostras as opções disponíveis dentro de cada option*/
+            h1 { /*É possível utilizar um mesmo style para mais de um tipo de tag, elemento - h1, span {}*/
+                /* display: none; Todo h1 irá sumir */
+                /* background-color: red; */
+                /* 
+                position: absolute; Alinha de acordo com a página, considerando os pixels
+                top: 400px;
+                left: 400px; 
+                */
+                font-size: 20px;
+            }
+
+            h1 { /*É possível acrescentar styles a styles já definidos, será concatenado as edições
+                    Em alguns casos pode ser sobreescrito */
+                font-weight: lighter;
+            }
+
+            .fundoVermelho { /*O ponto é utilizado para referir a uma classe*/
+                /*
+                    Para cor, temos 2 para cada cor. Red, Green e Blue
+                    Existe formar diferentes para referênciar a cor
+                    #000000 -> Utilizando os 6 dígitos
+                    #f00 -> Utilizando somente 3 dígitos
+                    rgb(255, 255, 255) -> Utilizando rgb, variando entre 0 e 255
+                */
+                background-color: #ff0000;
+            }
+
+            .negrito {
+                font-weight: bold; /*Altera o peso da Fonte, nesse caso colocando em negrito*/
+            }
+
+        </style>
+    </head>
+    <body>
+        <h1>CSS</h1>
+        <span style="display: none;">Texto Oculto</span><!-- É possível utilizar o style diretamente dentro da tag HTML, mas não é aconselhável -->
+        <span id="textoPrincipal">Texto 1</span><br> <!-- br = break line - Essa forma é antiga -->
+        <span class="fundoVermelho negrito">Texto 2</span><br> <!-- É possível marcar uma elemento com mais de uma classe -->
+        <span class="fundoVermelho" wm-atrib>Texto 3</span> <!-- É possível adicionar atributos, para a partir do JS acessá-los -->
+        <!-- Dica: Utilizar as Classes só para Styles e os atributos para manipular no JS -->
+    </body>
+</html>
