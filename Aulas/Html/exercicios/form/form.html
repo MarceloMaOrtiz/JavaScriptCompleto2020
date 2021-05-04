@@ -1,0 +1,87 @@
+<h1>Formulário</h1>
+
+<!--
+    o Primeiro form é utilizado quando temos somente um button, nesse caso
+    fazendo sentido manter a action na tag form.
+    Já o segundo caso, é para contemplar dois buttons no mesmo form, um para
+    inserir, outro para editar, levando a action para dentro do button.
+
+    Está sendo feita uma requisição POST para a URL abaixo
+
+    Caso seja alterado para um method GET, os parâmetros enviados são enviados
+    na própria URL e não no Body, mas ainda é possível utilizar o form
+-->
+<!-- <form action="http://localhost:8008/usuarios" method="POST"> -->
+<form method="POST">
+    <!--
+        É comum um imput escondido para armazenar o id do usuário em situações
+        possíveis de edição
+    -->
+    <input type="hidden" name="id" value="3">
+
+    <input type="text" name="nome">
+
+    <input type="password" name="senha">
+
+    <textarea name="bio" id="" cols="30" rows="10"></textarea>
+
+    <div>
+        <!--
+            Por compartilhar o mesmo name, e ser do tipo radio. Só é possível 
+            Selecionar uma das opções. É necessário colocar o value, para
+            enviar para o backend o valor diferente para cada opção
+        -->
+        <input type="radio" name="tipo" value="admin">Admin
+        <input type="radio" name="tipo" value="regular">Regular
+        <input type="radio" name="tipo" value="professor">Professor
+    </div>
+
+    <div>
+        <input type="checkbox" name="ativo">Ativo
+    </div>
+
+    <select name="estado">
+        <option value="">Selecione</option>
+        <option value="ac">Acre</option>
+        <option value="ba">Bahia</option>
+        <option value="ce">Ceará</option>
+    </select>
+
+    <!--
+        Esse select aceita escolher mais de uma opção, porém o padrão não
+        é de fácil utilização. é necessário segurar ctrl ou arrastar com o mouse
+    -->
+    <select name="interesses" multiple size="5">
+        <option value="node">Node</option>
+        <option value="js">JavaScript</option>
+        <option value="java">Java</option>
+        <option value="php">PHP</option>
+        <option value="python">Python</option>
+        <option value="go">Go</option>
+        <option value="c">C</option>
+    </select>
+
+    <!--
+        Trigger o form criado no início, ou seja envia um POST com os dados 
+        para a respectiva URL.
+        É possível utilizar uma opção dentro do button para alterar o method
+        utilizado, formaction. Para isso é necessário remover a action do form,
+        e deixa o button controlando isso. Esse tipo de utilização faz sentido
+        quando queremos mais de um button com ações diferentes. É possível ainda,
+        alterar o method do form dentro do button, formmethod="METHOD"
+    -->
+    <button formaction="http://localhost:8008/usuarios">Incluir</button>
+    <button formaction="http://localhost:8008/usuarios/3">Alterar</button> 
+</form>
+
+<style>
+    input, textarea, select {
+        display: block; /*block -> coloca um elemento em cada linhas*/
+        margin-bottom: 10px;
+    }
+
+    input[type=radio],
+    input[type=checkbox] { /*Seleciona os inputs que possuem o type=radio*/
+        display: inline; /*inline -> coloca um elemento do lado do outro*/
+    }
+</style>

@@ -1,0 +1,61 @@
+<h1>Listas Aninhadas</h1>
+<h3>Projetos</h3>
+<ul class="tree"> root
+    <li>
+        backend
+        <ul>
+            <li>
+                app
+                <ul>
+                    <li>produto.js</li>
+                    <li>usuario.js</li>
+                    <li>venda.js</li>
+                </ul>
+            </li>
+            <li>
+                config
+                <ul>
+                    <li>banco.js</li>
+                    <li>rotas.js</li>
+                    <li>servidor.js</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>
+        frontend
+        <ul>
+            <li>
+                public
+                <ul>
+                    <li>app.css</li>
+                    <li>app.js</li>
+                    <li>index.html</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+<link rel="stylesheet" href="http://files.cod3r.com.br/curso-web/tree.css">
+
+<!--
+    Desafio: O JS dentro do script não é executado quando acessado o index.html, pois no index.html
+    estamos lendo o arquivo html como html. Mas se executarmos esse arquivo separadamente o script
+    é executado.
+    O desafio é fazer que ao clicar no public a lista embaixo dele fique invisível, e quando clicar
+    de volta ele fique visível. Fazer isso para todas as listagens.
+-->
+<script>
+    document.querySelectorAll('.tree').forEach(element => {
+        element.addEventListener("click", function(e) {
+            const childCount = e.target.childElementCount
+            if (childCount > 0) {
+                for (let child of e.target.children){
+                    let newDisplay = child.style.display
+                    child.style.display = newDisplay === "none" ? "block" : "none"
+                }
+            }  
+        })
+    });
+</script>

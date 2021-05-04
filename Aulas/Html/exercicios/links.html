@@ -1,0 +1,45 @@
+<h1>Links</h1>
+
+<!--
+    URL Absoluta
+        Para utilizar link externo é obrigatório o uso do http://
+        Caso contrário será utilizado localhost
+-->
+<a href="https://www.google.com.br">Google - Mesma aba</a><br />
+<a href="https://www.google.com.br" target="_blank">Google - Nova Aba</a><br /><br />
+
+<!--
+    URL Relativa
+        A Busca é relativa a o local atual
+        1º Caso: Como esse HTML está sendo carregado no arquivo index.html
+            o local relativo que estaremos é o index.html, portanto:
+                Voltar 1 -> Funcionaria, index.html em si já é o arquivo
+                Voltar 2 -> Não funcionaria, procuraria na raiz do server
+                Voltar 3 -> Não funcionaria, procuraria uma pasta atrás /Aulas
+        2º Caso: O links.html seria executado separadamente, portanto o local
+            relativo será os /exercicios
+                Voltar 1 -> Não funcionaria, index.html está uma pasta atrás
+                Voltar 2 -> Não funcionaria, procuraria na raiz do server
+                Voltar 3 -> Funcionario, index.html se encontra uma pasta atrás
+-->
+<a href="index.html">Voltar 1</a><br />
+<a href="/index.html">Voltar 2</a><br />
+<a href="../index.html">Voltar 3</a><br /><br />
+
+<!-- Para linkar E-mail-->
+<a href="mailto:marcelo_smin@yahoo.com.br">Entre em Contato</a><br /><br />
+
+<!-- Foi utilizado esse style com position top 2000px, para jogar para fora da tela-->
+<div id="noticia" style="position:absolute;top:2000px;">
+    <h1>Notícia Bomba!</h1>
+    <p>Não era nada...</p>
+    <a href="#inicio">Voltar para o ínicio</a>
+</div>
+
+<!--
+    Âncora - URL -> Html/index.html#noticia
+        Utilizado para navegar dentro da página. A âncora #noticia, não é enviada para o backend
+            Mesmo essa tag estando embaixo da tag Div, o local dela será seguido do Entre em contato,
+            pois foi utilizado um style:absolute na div acima, jogando ela lá para baixo
+-->
+<a href="#noticia">Ir para notícia</a>
