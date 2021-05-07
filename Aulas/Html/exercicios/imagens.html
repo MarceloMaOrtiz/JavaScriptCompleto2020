@@ -1,0 +1,90 @@
+<style>
+    .circular {
+        width: 513px;
+        background-color: #444;
+    }
+
+    .texto {
+        width: 400px;
+    }
+
+    /*Ele procura img dentro da classe texto*/
+    .texto img {
+        margin-right: 10px;
+    }
+
+    /*É possível definir algumas opções para a img dentro do HTML ou do CSS*/
+    .cidade {
+        width: 513px;
+        height: 342px;
+        background-image: url("http://files.cod3r.com.br/curso-web/imagem4.jpg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 200%;
+    }
+</style>
+
+<p>
+    <!--
+        A lógica para utilizar o caminho absoluto e relativo é o mesmo estudado anteriomente
+            Alt -> Mensagem alternativa a imagem, caso a mesma não carregue
+            width e height -> Define largura e altura da imagem
+                Não é obrigatório especificar. Caso não utilize as proporções corretas, é bem
+                possível que a imagem será deformada
+            title -> Mostra o título da imagem quando deixa o mouse em cima
+    -->
+    <img src="http://files.cod3r.com.br/curso-web/imagem1.jpg"
+        alt="Muro da Cidade"
+        width="513" height="342"
+        title="Muro da Cidade por Tarso Bessa" />
+</p>
+
+<p>
+    <!--
+        Nesse caso estamos importando um GIF. Existe ferramente que convertem vídeos para git,
+        possibilitando assim a inserção de vídeos (gifs) via img. É muito comum utilizar gifs
+        para loading. OBS: Tomar cuidado com direitos da imagem
+    -->
+    <img src="http://files.cod3r.com.br/curso-web/imagem2.gif"
+        alt="Intro Cod3r" height="342" />
+</p>
+
+<p class="circular">
+    <!--
+        Importação de PNG possibilita trabalhar com a tranparência da imagem
+    -->
+    <img src="http://files.cod3r.com.br/curso-web/imagem3.png"
+        alt="Rio de Janeiro" height="342"/>
+</p>
+
+<p class="texto">
+    <!-- Utilizando uma imagem alinhada com um texto, align está auxiliando na posição da img -->
+    <img src="http://files.cod3r.com.br/curso-web/avatar.jpg"
+        alt="Avatar" height="50" align="left" />
+    Texto asdhfkjsahdfksadhfiuhwqf ajdksfhauisdhf kjsadhf kjsadhf
+    sadhfkjashd jfkhsadf ushaduif usad fus dufh adjsfhj
+    sdfwquehrudshafui ahsdui fhsdiu fhsadiu fysadui fyusadf
+</p>
+
+<!-- Exemplo de utilização do CSS para manipular completamente uma img -->
+<p class="cidade"></p>
+
+<p>
+    <!--
+        Na tag picture, do HTML 5, é possível utilizar várias imagens diferentes, possibilitando utilizar
+        critérios para exibir ou não uma imagem.
+            No caso abaixo, caso o width da tela seja maior que 600px, será utilizado o logo-larga,
+            caso contrário a picture procura a próxima imagem. É possível utilizar vários sources.
+            Extremamente relevante para trabalhar com responsividade. Poís é possível alterar
+            imagens de acordo com o tamanho da tela
+    -->
+    <picture>
+        <!--
+            Caso a primeira img não existe, dará um problema, e a de baixo não será exibida,
+            a não ser que atenda a condição necessária
+        -->
+        <source srcset="http://files.cod3r.com.br/curso-web/logo-larga.png"
+            media="(min-width: 600px)" alt="Logo Larga">
+        <img src="http://files.cod3r.com.br/curso-web/logo-estreita.png" alt="Logo">
+    </picture>
+</p>
