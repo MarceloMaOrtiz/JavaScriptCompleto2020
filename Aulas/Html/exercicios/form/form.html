@@ -1,5 +1,18 @@
 <h1>Formulário</h1>
 
+
+<style>
+    input, textarea, select {
+        display: block; /*block -> coloca um elemento em cada linhas*/
+        margin-bottom: 10px;
+    }
+
+    input[type=radio],
+    input[type=checkbox] { /*Seleciona os inputs que possuem o type=radio*/
+        display: inline; /*inline -> coloca um elemento do lado do outro*/
+    }
+</style>
+
 <!--
     o Primeiro form é utilizado quando temos somente um button, nesse caso
     fazendo sentido manter a action na tag form.
@@ -73,15 +86,3 @@
     <button formaction="http://localhost:8008/usuarios">Incluir</button>
     <button formaction="http://localhost:8008/usuarios/3">Alterar</button> 
 </form>
-
-<style>
-    input, textarea, select {
-        display: block; /*block -> coloca um elemento em cada linhas*/
-        margin-bottom: 10px;
-    }
-
-    input[type=radio],
-    input[type=checkbox] { /*Seleciona os inputs que possuem o type=radio*/
-        display: inline; /*inline -> coloca um elemento do lado do outro*/
-    }
-</style>

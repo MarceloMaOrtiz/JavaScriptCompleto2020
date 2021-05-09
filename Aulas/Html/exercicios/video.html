@@ -1,0 +1,123 @@
+<!--
+    Quando um vídeo é executado no browser, a máquina do usuário sempre terá feito o download,
+    portanto é muito difícil impedir totalmente o usário baixar o vídeo de outras formas
+-->
+
+<h1>Vídeo</h1>
+
+<h3>
+    Para o button Play, Pause e a barra de progresso utilizada no desafio funcionar
+    é necessário abrir o html separadamente, para o script ser executado
+</h3>
+
+<style>
+    .progresso {
+        height: 20px;
+        width: 500px;
+        border: solid 1px #444;
+        margin: 20px;
+    }
+    .progresso > div { /*Aplica numa div dentro da classe*/
+        background-color: red;
+        color: #fff;
+        height: 100%;
+        text-align: right;
+        font-size: 14px;
+        width: 0%; /* Essa propriedade que dará a sensação de progresso */
+    }
+</style>
+
+<!--
+    Não será utilizada a tag src do próprio vídeo, será utilizado a tag source, uma das
+    vantagen é a possibilidade de aplicar várias fontes diferentes
+    Propriedade Controls disponibiliza automaticamente o controle para o vídeo
+    Sem a probriedade controlsLists="nodownload" fica disponibilizado um butão para download
+-->
+<video id="meuVideo" width="800" height="450" autoplay preload="metadata" controls controlsLists="nodownload">
+    <source src="http://files.cod3r.com.br/curso-web/video.mp4" type="video/mp4">
+</video>
+
+<!-- Esta sendo informado o mesmo id do video acima no wm-progesso para associá-los -->
+<div wm-progresso="meuVideo" class="progresso"> <!-- Div de fora -->
+    <div> <!-- Para fazer a barra -->
+
+    </div>
+</div>
+<div>
+    <button wm-play="meuVideo">Play</button>
+    <button wm-pause="meuVideo">Pause</button>
+</div>
+
+<!--
+    Desafio
+        Criar um butão para dar play e pause em um vídeo, e desenhar uma progressive bar
+-->
+<script>
+    const video = document.getElementById("meuVideo")
+
+    const barraProgresso = document.querySelector(".progresso > div")
+
+    const buttonPlay = document.querySelector('[wm-play]')
+    const buttonPause = document.querySelector('[wm-pause]')
+
+    let percentTempo
+
+    function barraDeProgresso() {
+
+       
+        intervalID = setInterval(() => {
+
+            percentTempo = 100 * video.currentTime / video.duration
+
+            console.log(percentTempo)
+
+            barraProgresso.style.width = `${percentTempo}%`
+
+        }, 100)
+
+        console.log(intervalID)
+    }
+
+    document.querySelectorAll(".progresso").forEach(element => {
+        console.log(element)
+        element.onclick = function (e) {
+
+            let tamanhoBarra = this.offsetWidth - this.offsetLeft
+            let posicaoClick = e.pageX - this.offsetLeft
+
+            console.log(tamanhoBarra)
+
+            let percentClick = 100 * posicaoClick / tamanhoBarra
+
+            if (percentClick > 100) {
+                percentClick = 100
+            }
+
+            console.log(percentClick)
+
+            barraProgresso.style.width = `${percentClick}%`
+
+            video.currentTime = video.duration * percentClick / 100
+
+            console.log(this)
+            console.log(e.pageX, this.offsetLeft, this.offsetWidth)
+            console.log(e.pageX - this.offsetLeft)
+
+            
+        }
+    })
+
+    if (!video.paused)
+        barraDeProgresso()
+    
+    buttonPlay.onclick = function (e) {
+        video.play()
+        barraDeProgresso()
+    }
+
+    buttonPause.onclick = function (e) {
+        video.pause()
+        clearInterval(intervalID)
+    }
+
+</script>
