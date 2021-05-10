@@ -1,0 +1,46 @@
+<h1>Tags Não Visuais</h1>
+
+<!--
+    Tags Semânticas...
+        section -> Agrupamente temático de conteúdo.
+            Coloca uma seção dentro do HTML, por exemplo um texto dividido em capitulos.
+        article -> Conteúdo auto contigo, 
+            não tem tanto haver com as coisas de fora, tem início, meio e fim
+        header -> Cabeçalho do documento
+        footer -> Rodapé do documento
+        nav-> Agrupamento de links de navegação
+        aside -> Coloca ao lado. Pode ser usado para relacionar com um conteúdo em volta (adendo)
+            exemplo, sidebar
+        details -> Exibe detalhes que podem ser exibidos ou escondidos
+        div -> Divisão ou seção
+        span -> Usado para agrupar elementos inline
+-->
+
+<style>
+    div {
+        display: inline; /*Com essa alteração temos as divs na mesma linha*/
+    }
+
+    span {
+        display: block; /*É possível alterar para o conteúdo não ser inline*/
+    }
+
+    .diferente {
+        font-weight: bold;
+        font-size: 30px;
+        color: chocolate;
+    }
+</style>
+
+<!-- Por padrão, display da div é block, ocupando assim a área inteira da linha -->
+
+<div>Área 1</div>
+<div>Área 2</div>
+
+<!--
+    p por padrão também pula uma linha
+    span utilizado nesse caso para alterar determinado conteúdo inline
+-->
+<p>
+    Esse é um texto com <span class="diferente">muitas palavras</span> e ponto.
+</p>

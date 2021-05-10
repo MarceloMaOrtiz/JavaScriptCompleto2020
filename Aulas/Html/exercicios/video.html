@@ -1,6 +1,8 @@
 <!--
     Quando um vídeo é executado no browser, a máquina do usuário sempre terá feito o download,
-    portanto é muito difícil impedir totalmente o usário baixar o vídeo de outras formas
+    portanto é muito difícil impedir totalmente o usário baixar o vídeo de outras formas.
+    OBS: Na pasta Exercícios da root, possui a resolução utilizada pelo professor. Importante
+    para analisar como foi organizada as funções
 -->
 
 <h1>Vídeo</h1>
@@ -55,9 +57,18 @@
 <script>
     const video = document.getElementById("meuVideo")
 
+    // O Objetivod de alterar o oncontextmenu é inviabilizar o download com o botão direto no video
+    // Ao atribuir diretamente o false, não funcionou. Mas ao utilizar uma função restornando false
+    // funcionou, portando, acredito que o oncontextmenu trabalha com função.
+    video.oncontextmenu = () => false
+
     const barraProgresso = document.querySelector(".progresso > div")
 
     const buttonPlay = document.querySelector('[wm-play]')
+    // Exemplo de como filtrar utilizando o campo mais específico. Isso pode ser utilizado para
+    // desenvolver a função que tratará baseado no id de determinado video, e o play seria
+    // automaticamente associado ao vídeo correto
+    // const buttonPlay = document.querySelector('[wm-play=meuVideo]')
     const buttonPause = document.querySelector('[wm-pause]')
 
     let percentTempo
@@ -69,23 +80,18 @@
 
             percentTempo = 100 * video.currentTime / video.duration
 
-            console.log(percentTempo)
-
             barraProgresso.style.width = `${percentTempo}%`
+            barraProgresso.innerHTML = `${percentTempo.toFixed(1)}%`
 
         }, 100)
-
-        console.log(intervalID)
     }
 
     document.querySelectorAll(".progresso").forEach(element => {
-        console.log(element)
         element.onclick = function (e) {
 
             let tamanhoBarra = this.offsetWidth - this.offsetLeft
             let posicaoClick = e.pageX - this.offsetLeft
 
-            console.log(tamanhoBarra)
 
             let percentClick = 100 * posicaoClick / tamanhoBarra
 
@@ -93,17 +99,11 @@
                 percentClick = 100
             }
 
-            console.log(percentClick)
-
             barraProgresso.style.width = `${percentClick}%`
 
             video.currentTime = video.duration * percentClick / 100
+            barraProgresso.innerHTML = `${percentClick.toFixed(1)}%`
 
-            console.log(this)
-            console.log(e.pageX, this.offsetLeft, this.offsetWidth)
-            console.log(e.pageX - this.offsetLeft)
-
-            
         }
     })
 
