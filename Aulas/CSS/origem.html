@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Origem CSS: Externo, Interno e Inline</title>
+    <!--
+        A preferência que é feita pelo browser ao utilizar um style é feita através da ordem
+        do processamento. Último a ser processado terá preferência. Porém a preferência do inline
+        sempre será maior.
+
+        Utilização do CSS
+            Externo -> Utilização do CSS a partir de links externos, melhor abordagem
+            Interno -> Utilização do CSS feito dentro do arquivo HTML
+            Inline -> Utilização do CSS diretamente na TAG envolvida, não é recomendado
+    -->
+    <style>
+        body {
+            background-color: aquamarine;
+        }
+    </style>
+
+    <!--
+        Normalmente os links são colocados dentro da Head
+        rel -> Relação -> Tipo de relação do link com a página
+        href -> Referência
+    -->
+    <link rel="stylesheet" href="css/origem.css">
+
+</head>
+
+<body style="background-color: coral;">
+    <h1>E agora?</h1>
+</body>
+
+</html>

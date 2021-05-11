@@ -1,0 +1,121 @@
+<!--
+    Seletores para aplicação de Style -- Existe uma diferença no nível de performance na hora de
+    aplicar o style na página. Ex, o id e classe possuem uma performance mais rápida que o atributo
+        * -> todos os elementos da página
+        elem -> são as tags
+        .class -> reusar nas classes, projetado para uso de CSS
+        #id -> identifica unicamente um elemento da página
+        [atrib] -> utiliza atributos personalisados, preferêncialmente utilizar junto do JS
+        :pseudo-class -> Consegue aplicar efeitos dentro de um elemento
+        ::pseudo-elementos -> Faz uma seleção diferente para aplicar o style
+    
+    Combinar Seletores
+        Adjacent Sibling -> irmãos adjancentes -> Um seguido do outro
+            div + p
+        General Sibling -> irmão de um mesmo pai -> Não há obrigação de estarem seguidos um do outro
+            div ~ p
+        child -> filho direto -> não consegue encontrar, por exemplo, um filho do filho 
+            div > p
+        descendant -> todos os descendentes -> Não pega somente os filhos diretos
+            div p
+-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>CSS Selectors</title>
+    <link rel="stylesheet" href="css/tag.css">
+    <style>
+        /* Serão comentadas, pois está sendo testado seletor por seletor */
+
+        /* * { */
+
+        /* .tag { */
+
+        /* #aprovados { */
+
+        /* #aninhado > div{ */
+
+        /* #aninhado section { */
+
+        /* p + ul { */
+
+        /* p ~ ol { */
+
+        /* [feira] { */
+
+        /* [feira=casa] { */
+
+        /* o ( ~ ) pega se dentro do atributo contem determinado valor separado por espaço */
+        /* [feira~=escritorio] { */
+
+        /* o ( * ) pega se dentro do atributo contain em algum momento o valor */
+        /* [feira*=sa] { */
+        
+        /*
+            Pega algúem que tenha como primeiro filho um span. Nesse caso foi adicionado a classe 
+            no label dentro da section, pois para vermos o resultado tinhamos que ter um filho
+            direto de alguém, e como a label estava sendo gerada na section pelo JS, o primeiro filho
+            era a label, ao adicionar o no label o primeiro filho é o span
+        */
+        /* span:nth-child(1) { */
+        
+        /*
+            é possível selecionar tb todos os filhos diretos que respeitam determinada condição
+            odd -> Ímpares || even -> pares
+        */
+        /* section > :nth-child(even) { */
+    
+        /* Aplica o Style tanto para os elementos pares da section, quando para os ul e os p */
+        /* section > :nth-child(even), ul, p { */
+
+        /* 
+            Utilizando espaço, é pego os decendentes dos filhos impares da section, selecionando
+            somente as labels
+        */
+        /* section > :nth-child(odd) label { */
+
+        /* Pega somente o segundo elemento do tipo span que são filhos do section */
+        section > span:nth-of-type(2) {
+            color: #ff0;
+            background-color: #f77;
+        }
+
+        /* Além dos seletores utilizados, existem infinitas possíbilidades */
+    </style>
+</head>
+
+<body>
+    <div class='tag'>
+        <div class='tag'>
+            <p class='tag'>1</p>
+            <ul class='tag' feira='casa'>
+                <li>Arroz</li>
+                <li>Feijão</li>
+            </ul>
+            <ul class='tag' feira='escritorio empresa'>
+                <li>Café</li>
+                <li>Água</li>
+            </ul>
+            <ol id='aprovados' class='tag'>
+                <li>Maria</li>
+                <li>Pedro</li>
+                <li>Ana</li>
+            </ol>
+            <div id='aninhado' class='tag'>
+                <div class="tag">
+                    <section class='tag noLabel'> 
+                        <span class='tag'>1</span>
+                        <p class='tag'>2</p>
+                        <span class='tag'>3</span>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/tag.js"></script>
+</body>
+
+</html>

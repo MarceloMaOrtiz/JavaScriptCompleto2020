@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Herança</title>
+    <style>
+        /* 
+            Possível adicionar novas fontes através de CDN: https://fonts.google.com/
+
+            Existem elementos que são transmitidos por padrão via Herança e outros não.
+            Para forçar a existência de herança em elementos não herdados automaticamente
+            é necessário utilizar o inherit
+        
+            OBS: É possível acompanhar o comportamento da herança inspecionando o documento html
+            no browser. Visualizando o que está sendo de fato utilizado na style, se é do padrão
+            por herança por exemplo.
+        */
+        body {
+            font-family: monospace; /* Herança */
+            font-size: 40px; /* Herança */
+            /* border utiliza 3 propriedades, estilo da linha, espessura e cor */
+            border: solid 3px red; /* Sem Herança */
+            padding: 50px; /* Sem herança */
+        }
+
+        div {
+            border: inherit; /* inherit faz com que o elemento herde do parente */
+            padding: inherit;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 style="background-color: green;">Herança</h1>
+    <div>Estou herdando</div>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Anatomia CSS</title>
+    <style>
+        /* É comum a utilização do ( - ) em css */
+        .seletor {
+            /* Corpo -> define as propriedades */
+            color: #222; /* Hexadecimal */
+            font-size: 20px; /* Comum utilização de valores acompanhados de unidades */
+            text-align: center; /* Existem valores pré-definidos */
+            border: solid 5px navy; /*shorthand property -> Propriedades CSS associados com múltiplos valores */
+            font-family: Helvetica, sans-serif; /* Utilização de alternativas (,) -> Caso a primeira não de certo, utiliza a segunda */
+            /* Funções */
+            width: calc(100% - 100px); /* calc -> para calcular valores */
+            background-color: rgb(34, 153, 189); /* rgb -> para definir a quantidade de red, green e blue na cor (0 - 255) */
+        }
+
+        /* Usando pseudo-classe ( : ) -> Aplica determinado estilo quando um determinado evento acontecer */
+        .seletor:hover { /* hover é uma pseudo-classe que aplicará determinado efeito quando o mouse do usuário passar no componente */
+            background-color: orangered;
+        }
+
+        /* Usando pseudo-elemento ( :: )-> Aplica determinado estilo em um "elemento" determinado */
+        .seletor::first-letter { /* Aplica um efeito no primeiro elemento, vale ressaltar que a letra não é um elemento, por isso pseudo  */
+            font-size: 60px;
+            font-weight: bold;
+        }
+
+        /*
+            Padrões de nomenclaturas para o CSS. O mais importante é manter a consistência
+                dash-case
+                    - Mais comum
+                camelCase
+
+    </style>
+</head>
+
+<body>
+    <div class="seletor">Conteúdo</div>
+</body>
+
+</html>
