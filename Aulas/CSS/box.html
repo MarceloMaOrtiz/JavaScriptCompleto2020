@@ -1,3 +1,24 @@
+<!--
+    Box Model -> Divisão do modelo de caixa do CSS
+        É possível visualizar esse modelo no próprio browser
+        Divisões:
+            Margin
+                Border
+                    Padding
+                        Content
+
+        Content -> Próprio conteúdo
+        Padding -> Espaço entre o conteúdo e a borda
+        Border -> Borda
+        Margin -> Separação entre os componentes
+
+        Regras tanto para o Margin como o Padding
+            Shorcuts
+                (margin or) padding: a; -> atribui para todos os lados o mesmo pixel
+                (margin or) padding: a a; -> primeiro valor para o eixo vertical, segundo horizontal
+                (margin or) padding: a a a a; -> Cima, direita, baixo, esquerda
+-->
+
 <!DOCTYPE html>
 <html>
 
@@ -6,6 +27,32 @@
     <title>Box Model</title>
     <style>
         /* ... */
+        body {
+            font-size: 80px;
+            margin: 0px;
+        }
+
+        .c1 {
+            background-color: orange;
+        }
+
+        .c2 {
+            background-color: skyblue;
+        }
+
+        .c3 {
+            background-color: tomato;
+        }
+
+        div {
+            float: left; /* Faz com que os elementos caem para esquerda, removendo as divs individuais */
+            padding-top: 100px; /* Prevalece o último executado, no caso o padding abaixo */
+            padding: 10px 50px 100px 150px; /* Temos 110px de altura. 200px de largura. Fora o tamanho do componente */
+            padding: 100px 50px;
+            padding: 50px;
+            margin: 0px 20px;
+            border: solid 15px black;
+        }
     </style>
 </head>
 

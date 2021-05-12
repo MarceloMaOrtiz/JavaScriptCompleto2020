@@ -1,11 +1,36 @@
+<!--
+    Por padrão o width considera somente o tamanho do elemento, portanto ignorando padding e border.
+    
+    box-sizing -> permite alterar a referência considerada pelo width
+        content-box -> Normalmente utilizado pelo padrão da div
+        border-box -> Considera o width até a border
+            Não é uma propriedade enviada por herança. Válido utilizar * para aplicar em todos os elementos
+-->
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>Tamanho Box</title>
     <style>
+        /* * {
+            box-sizing: border-box;
+        } */
+
         body {
             font-size: 45px;
+        }
+
+        div {
+            background-color: deepskyblue;
+            width: 100%;
+            height: 300px;
+            padding: 100px;
+            border: solid 20px;
+            /* Dessa forma quando temos a width 100% mais uma padding e border, temos o resultado final extrapolando a tela */
+            box-sizing: content-box;
+            box-sizing: border-box;
+            
         }
     </style>
 </head>

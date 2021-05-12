@@ -8,6 +8,82 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <style>
         /* ... */
+        body {
+            margin: 0;
+            background-color: #ccc;
+        }
+
+        .cabecalho {
+            position: relative;
+            padding: 15px;
+            border-bottom: solid 5px skyblue;
+            background-color: rgb(22, 22, 22);
+        }
+
+        .logo {
+            margin: 8px;
+        }
+
+        .cabecalho img {
+            width: 230px;
+            height: 40px;
+        }
+
+        /* Mantém todos os itens do menu no mesmo nível */
+        .logo, .menu, .menu li, .menu-toggle, .autenticacao{
+            display: inline-block;
+        }
+
+        .menu {
+            position: absolute;
+            margin: 12px 30px;
+            top: 25px;
+        }
+
+        .menu ul {
+            margin-block-start: 0;
+            margin-block-end: 0;
+            padding-inline-start: 0;
+        }
+
+        .menu a {
+            box-sizing: border-box;
+            text-decoration: none;
+            color: #fff;
+            padding: 25px;
+        }
+
+        .menu a:hover {
+            color: black;
+            background-color: skyblue;
+        }
+
+        .autenticacao {
+            position: absolute;
+            margin: 12px 30px;
+            top: 25px;
+            right: 2%;
+        }
+
+        .autenticacao a {
+            text-decoration: none;
+            color: #fff;
+            padding: 25px;
+        }
+
+        .autenticacao a:hover {
+            color: black;
+            background-color: skyblue;
+        }
+
+        .menu-toggle {
+            position: absolute;
+            margin: 12px 30px;
+            top: 20px;
+            right: 2%;
+            display: none;
+        }
+        
     </style>
 </head>
 
@@ -19,6 +95,7 @@
             </a>
         </div>
         <button class="menu-toggle">
+            <!-- o link da font family=oswald está sendo utilizada aqui -->
             <i class="fa fa-lg fa-bars"></i>
         </button>
         <nav class="menu">
@@ -45,7 +122,8 @@
 
     <script>
         // ...
-    </script>
+    </script> 
+
 </body>
 
 </html>

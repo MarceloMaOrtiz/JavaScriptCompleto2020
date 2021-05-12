@@ -1,3 +1,38 @@
+<!--
+    Unidades
+        Absolutos
+            px
+                1 px do HTML, CSS não equivale a 1 px físico do device
+                    O do HTML é normalizado de acordo com algumas informações
+            cm
+            mm
+            ...
+        
+        ViewPorts - Relativo
+            vh
+                cálculo -> height-viewport / 100
+                    1 vh é 1/100 do height do viewport
+            vw
+                cálculo -> width-viewport / 100
+                    1 vh é 1/100 do width do viewport
+            vmin
+                menor dimensão entre height e width
+            vmax
+                maior dimensão entre height e width
+            %
+                caso especial - unidades2.html
+                    a referência varia de acordo com a forma que foi desenvolvida
+        
+        Font - Absoluto ou Relativo
+            rem
+                valor será relativo a raiz (principal) da aplicação
+            em
+                valor será relativo ao parente mais próximo
+            %
+                caso especial - unidades2.html
+                    a referência varia de acordo com a forma que foi desenvolvida
+        
+-->
 <!DOCTYPE html>
 <html>
 
@@ -6,6 +41,31 @@
     <title>Unidades #01</title>
     <style>
         /* ... */
+        .unidades-absolutas {
+            position: absolute; /* Necessário para o top e left fazerem efeito */
+            font-size: 40px; /* Fontes absolutas não são modificadas quando o browser é modificado */
+            padding: 20px;
+            border: solid 5px #222;
+            margin: 30px;
+            width: 4cm;
+            height: 20mm;
+            top: 150px;
+            left: 200px;
+        }
+
+        /* Existem variações para o comportamento da % */
+        .unidades-relativas {
+            position: absolute; /* Necessário para o top e left fazerem efeito */
+            font-size: 1em; /* Tamanho padrão */
+            font-size: 4em; /* 4 vezes o tamanho padrão */
+            padding: 5%; /* Aumentando a tela, também será aumentado o padding, pois vale 1/100 da viewport */
+            border: solid 1vw #222; /* Aumentando a tela, também será aumentada a borda, pois vale 1/100 da viewport */
+            margin: 0.8%;
+            width: 20vw;
+            height: 15vh;
+            bottom: 5%;
+            right: 5%;
+        }
     </style>
 </head>
 

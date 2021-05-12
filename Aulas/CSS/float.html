@@ -1,3 +1,9 @@
+<!--
+    Float - Flutuação -> Flutua os elementos para direita, esquerda...
+    Era uma técnica muito utilizada antigamente por falta de muita ferramentas novas. Hoje em
+    dia é necessário tomar cuidado com a utilização, pois pode gerar códigos complexos, e
+    gambiarrados. Para determinadas situações será aconselhável utilizar o flex-box no lugar
+-->
 <!DOCTYPE html>
 <html>
 
@@ -11,18 +17,36 @@
 
         .c1 {
             background-color: red;
+            /* 1. Ao flutuar um elemento, todos os outros elementos desconsideram esse elemento */
+            float: right;
         }
 
         .c2 {
             background-color: green;
+            /* 2. O clear possibilita resetar a desconsideração gerada com o float */
+            clear: right;
+            /* 3. Nesse passo temos o c2 flutando na esquerda, e o c3 e c4 desconsiderando ambos elementos */
+            float: left;
         }
         
         .c3 {
             background-color: blue;
+            /* 4. Só reseta a consideração a direita, ou seja, do c1 */
+            clear: right;
+            /* 5. Reseta ambas considerações */
+            clear: both;
         }
 
         .c4 {
             background-color: orange;
+            float: right;
+        }
+
+        div {
+            height: 150px;
+            width: 150px;
+            /* float varia inclusive a ordem, ou seja, o red será sempre o primeiro */
+            /* float: left; */
         }
     </style>
 </head>

@@ -1,3 +1,6 @@
+<!--
+    Para texto o aconselhável é trabalhar principalmente com unidades relativas
+-->
 <!DOCTYPE html>
 <html>
 
@@ -11,11 +14,76 @@
             margin: 0;
         }
 
+        html {
+            font-size: 20px;
+        }
+
         body {
             display: flex;
             flex-direction: column;
             align-items: center;
         }
+
+        div {
+            font-size: 50px;
+        }
+
+        p {
+            /* valores padrões */
+            font-size: 1em;
+            font-size: 100%;
+            font-size: 16px;
+            font-size: 12pt;
+
+            /* Unidades absolutas */
+            font-size: 100px; /* Tamanho do pixel é relativos. (Baseado, por exemplo, na densidade da tela) */
+            font-size: 72pt; /* Pontos */
+            font-size: 1in; /* Polegadas */
+
+            /* Unidades relativas */
+            font-size: 2.2em;
+            font-size: 2.2rem;
+            font-size: 50vh;
+            font-size: 10vw;
+
+            font-family: monospace; /* Todas as letras ocupam o mesmo espaço */
+            font-family: Georgia, serif; /* família das serif, possue uma pontas nas letras */
+            font-family: Verdana, sans-serif; /* família sans-serif, são letras mais curvadas */
+            font-family: 'Indir Flower', cursive;
+
+            font-weight: 900;
+            font-weight: bold;
+            font-weight: bolder;
+            font-style: italic;
+            text-transform: uppercase;
+            text-decoration: overline line-through;
+            text-decoration: underline;
+            word-spacing: 10px;
+            letter-spacing: 20px;
+            line-height: 2.5em;
+            text-align: center;
+        }
+
+        /* classe .botao irá definir o arcabolso geral de um botão */
+        .botao {
+            font-size: 28px;
+            text-decoration: none; /* Remove o underline de link para criar o botão */
+            padding: 10px 30px;
+            border-radius: 20px;
+        }
+
+        /* classe .destaque irá definir a cor, acabamento final do botão */
+        .destaque {
+            color: #fff;
+            background-color: tomato;
+            box-shadow: 2px 2px 1px 1px #000;
+        }
+
+        /* Pseudo classe que é ativada quando o clique está acontecendo */
+        .destaque:active {
+            box-shadow: none;
+        }
+        
     </style>
 </head>
 

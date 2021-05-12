@@ -5,9 +5,14 @@
     <meta charset="UTF-8">
     <title>Altura e Largura</title>
     <style>
+        html {
+            height: 100%;
+        }
+
         body {
             font-size: 40px;
             background-color: coral;
+            height: 100%;
         }
 
         div {
@@ -17,12 +22,44 @@
         span {
             background-color: dodgerblue;
         }
+
+        /*
+            Tamanhos absolutos influência diretamente a width e a height
+
+            Tamanhos relativos ( % ) é necessário tomar um cuidado com valores pequenos.
+                Utiliza como base a informação do pai.
+
+            Display
+                block ou inline-block -> considera a width e height
+                    ATENÇÃO: inline-block considera um espaço invisível entre as tags
+                inline -> Não considera width e height
+        */
+        span, div { /* Span por padrão possue display: inline; */
+            width: 50%; /* Somente o display block pegará essa largura */
+            /* display: block; */
+            /* display: inline; */
+            height: 50%; /* Não gera efeito, pois a height do body, por padrão, é a soma da span e div */
+            height: 250px;
+            /*
+                é Possível fazer o feito funcionar alterando as % dos pais, por exemplo será alterado a 
+                height do html, pois por padrão a height do html é a height dos elementos, e posteriomente
+                será alterada a height do body, pois esse é filho do html.
+            */
+            height: 50%;
+            /*
+                inline-block: Gerou o efeito de height tb no span, mas manteram em linhas separadas por conta do
+                espaço entre as tags div e span, ao remover esse espaço a span e a div foram para mesma linha
+            */
+            /* display: inline-block;  */
+        }
     </style>
 </head>
 
 <body>
-    <div>Título</div>
-    <span>Subtítulo</span>
+    <div>
+        Título
+    </div><!--
+    --><span>Subtítulo</span>
 </body>
 
 </html>

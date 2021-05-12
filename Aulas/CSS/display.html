@@ -6,6 +6,43 @@
     <title>Display</title>
     <style>
         /* ... */
+        body {
+            font-size: 40px;
+            color: #fff;
+            background-color: coral;
+        }
+
+        ul {
+            padding: 0px;
+        }
+
+        li {
+            background-color: purple;
+        }
+
+        div {
+            background-color: seagreen;
+        }
+
+        span {
+            background-color: dodgerblue;
+        }
+
+        /*
+            Por padrão a div já possui display block, o span utiliza display inline. ul possui por
+            padrão display block, isso fez com que os li descecem para linha de baixo
+        */
+        div, span, li { /* O efeito utilizado é pego a partir da ordem de execução */
+            width: 50%; /* Não houve efeito no span antes de colocar o display block. Após alterar para display: inline essas propriedades foram ignoradas */
+            width: 200px; /* Não houve efeito no span antes de colocar o display block. Após alterar para display: inline essas propriedades foram ignoradas */
+            height: 80px; /* Não houve efeito no span antes de colocar o display block. Após alterar para display: inline essas propriedades foram ignoradas */
+            padding-top: 30px; /* Houve efeito no span antes de colocar o display block */
+            text-align: center; /* Alinha dos textos no centro */
+            display: block; /* Cada elemento terá sua própria linha */
+            display: inline-block; /* Mantém na mesma linha, mas ainda é possível manipular width e height */
+            display: inline; /* Os elementos ficarão na mesma linha. Não é possível alterar width e height */
+        }
+
     </style>
 </head>
 

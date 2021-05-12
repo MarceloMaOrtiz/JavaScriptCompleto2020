@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 
@@ -6,11 +7,26 @@
     <title>Cores</title>
     <style>
         /* 
-            https://www.w3schools.com/colors/colors_hsl.asp
+            HSL - (Hue, Saturation, Lightness) - (0-360, 0-100, 0-100) 
+                https://www.w3schools.com/colors/colors_hsl.asp
             
-            https://coolors.co/
-            http://paletton.com/
+            Auxilio de paletas de cores
+                https://coolors.co/
+
+            Auxilia na seleção de paletas de cores mais avançadas
+                https://paletton.com/
         */
+        body {
+            background-color: green; /* ctrl+space mostra diversas cores disponíveis */
+            background-color: #00ff00; /* # ff (red) ff (green) ff (azul) */
+            background-color: #abc; /* # a (aa) b (bb) c (cc) */
+            background-color: #edc91255; /* Adiciona tranparência a cor utilizando os ultimo 2 Hexadecimais */
+            background-color: #abc5; /* Possível utilizar transparência para valores repetidos ( 55 ) */
+            background-color: rgb(00, 255, 00); /* (red, green, blue) variando entre 0-250 */
+            background-color: rgba(00, 255, 00, .5); /* (red, green, blue, alpha) alpha = tranparência ( 0-1 ) */
+            background-color: hsl(299, 58%, 50%); /* (hue, saturation, lightness) utilizando % */
+            background-color: hsla(299, 58%, 50%, .5); /* (hue, saturation, lightness, alpha) */
+        }
     </style>
 </head>
 

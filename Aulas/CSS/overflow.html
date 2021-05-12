@@ -1,3 +1,6 @@
+<!--
+    Overflow -> Quando um elemento estrapola outro
+-->
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,9 +9,19 @@
     <style>
         div {
             font-size: 40px;
+            /*
+                Os tamanhos fixos fazem gerar o overflow, pois por padrão será utilizado o tamanho
+                de acordo com a necessidade
+            */
             height: 100px;
             width: 260px;
             border: solid 3px;
+            /* Por padrão o CSS permite extrapolar */
+            overflow: hidden; /* Tudo que extrapolar o elemento é escondido */
+            overflow: scroll; /* Gera um scroll dentro do elemento tanto na vertical quanto horizontal */
+            overflow-x: scroll; /* Manipula o overflow da horizontal */
+            overflow-y: hidden; /* Manipula o overflow da vertical */
+            /* Existem outras possibilidades para o overflow */
         }
     </style>
 </head>

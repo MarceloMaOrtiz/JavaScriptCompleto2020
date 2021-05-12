@@ -1,3 +1,6 @@
+<!--
+    Análise sobre impactos referentes a utilização da %
+-->
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,9 +8,33 @@
     <title>Unidades #02</title>
     <style>
         /* ... */
+        .fora {
+            position: relative;
+            background-color: orange;
+            width: 400px;
+            height: 400px;
+            padding: 50px;
+        }
+        
+        .dentro {
+            background-color: mediumvioletred;
+            height: 100px;
+            width: 100%;
+            /*
+                As position irão variar a referência do width na hora de gerar. Necessário
+                ressaltar que a position da classe .fora também pode influênciar na
+                referência. Removendo o relative do .fora e utilizando absolute no .dentro
+                será considerado a % em cima da viewport
+            */
+            position: static; /* É o padrão */
+            position: relative; /* Utiliza o espaço do conteúdo */
+            position: absolute; /* Utiliza o espaço do conteúdo + padding */
+            position: fixed; /* Utiliza o tamanho do viewport */
+        }
     </style>
 </head>
 <body>
+    <!-- Por padrão uma div já possui width: 100%; e não possui height -->
     <div class="fora">
         <div class="dentro"></div>
     </div>

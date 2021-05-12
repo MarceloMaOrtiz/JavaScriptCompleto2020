@@ -12,6 +12,27 @@
             border: solid 5px;
             display: none;
         }
+
+        /* Faz com que o style só seja executado quando determinada condição seja cumprida */
+        @media (max-width: 600px) {
+            .muito-pequeno {
+                display: block;
+            }
+        }
+
+        /* Dessa forma, utilizando ( , ), ele usará o style se qualquer um dos casos for atendido */
+        @media (max-width: 1000px), (orientation: landscape) {
+            .pequeno-retrato {
+                display: block;
+            }
+        }
+
+        /* Dessa forma, utilizando ( and ), ele usará o style se ambos os casos forem atendidos */
+        @media (min-width: 500px) and (max-width: 1000px) {
+            .intervalo {
+                display: block;
+            }
+        }
     </style>
 </head>
 <body>

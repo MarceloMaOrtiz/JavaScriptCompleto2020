@@ -68,6 +68,9 @@
         }
         
         .menu-principal nav {
+            /*
+                Existe uma situação delicada aqui no menu, por conta do inline-block (tomar cuidado), quando altera o width para 200px o menu se torna uma única coluna pois o menu-principal tem 400px. Isso ocorre, pois entre os 2 navs no html existe um caracter invisível que está sendo lido, gerando esse bug, que é uma "linha" entre as duas colunas, que não foi criada hora alguma. Para resolver é possível colocar os navs um seguido do outro, ou adicionar um cometários iniciando no primeiro e finalizando no segundo, ou reduzir o width para um tamanho que não ocorra a situação descrita
+            */
             display: inline-block;
             background-color: #fff;
             min-width: 198px;
