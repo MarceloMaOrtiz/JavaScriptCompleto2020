@@ -1,3 +1,7 @@
+<!--
+    O desafio conta em pegar uma imagem, e gerar a partir do CSS uma similar
+-->
+
 <!DOCTYPE html>
 <html>
 
@@ -6,6 +10,86 @@
     <title>Desafio Card</title>
     <style>
         /* ... */
+        * {
+            box-sizing: border-box;
+        }
+
+        div {
+            position: relative;
+            height: 400px;
+        }
+
+        .curso {
+            /*
+                Por conta do inline-block pode ocorrer uma situação quando a imagem não carregar, que é
+                jogar o card para baixo, pois o align padrão tem seu próprio comportamento. Para
+                solucionar é necessário adicionar o vertical-align: top;
+                O erro citado acima não ocorreu na minha solução, provavelmente por definir o tamanho
+                da img manualmente.
+            */
+            display: inline-block; 
+            width: 270px;
+            height: 330px;
+            margin: 2%;
+            box-shadow: 5px 5px 10px -7px #111111;
+            box-shadow: 0 4px 8px 0 #aaaa, 0 6px 20px 0 #aaaa;
+        }
+
+        .curso img {
+            display: block;
+            width: 96%;
+            height: 160px;
+            margin: 2%;
+        }
+
+        .curso-info {
+            position: static;
+            margin: 3%;
+            height: 100px;
+            overflow: hidden;
+        }
+
+        .curso-info h4,
+        .curso-info p {
+            margin: 3%;
+            text-align: left;
+        }
+
+        .curso-info h4 {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 18pt;
+            font-weight: normal;
+        }
+
+        .curso-info p {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 13pt;
+            font-weight: normal;
+
+        }
+
+        .curso-preco {
+            position: static;
+            margin: 3%;
+            height: auto;
+            text-align: right;
+            word-spacing: 5pt;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        .preco-de {
+            position: relative;
+            color: darkred;
+            font-size: 14pt;
+            text-decoration: line-through;
+        }
+
+        .preco-por {
+            color: darkgreen;
+            font-size: 20pt;
+            font-weight: bolder;
+        }
+
     </style>
 </head>
 
@@ -27,8 +111,8 @@
                 <span class="preco-de">R$80,00</span>
                 <span class="preco-por">R$50,00</span>
             </div>
-        </div>
-        <div class="curso">
+        </div><!--
+        --><div class="curso">
             <img src="http://files.cod3r.com.br/curso-web/curso2.jpg" />
             <div class="curso-info">
                 <h4>Web Moderno com Javascript + Projetos</h4>

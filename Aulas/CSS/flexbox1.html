@@ -1,3 +1,35 @@
+<!--
+    Não é uma tecnologia muito nova
+    É nativa do CSS3
+    É uma tecnologia complementar ao CSS Grid
+
+    Tecnologia para aplicar layout alterando o display para flex, ao alterar é necessário definir a
+    orientação desejada para trabalhar. O Flex-box é unidimensional ( unidirecional ), operando ou
+    em cima de uma linha, ou uma coluna.
+
+    Funcionamento
+        - Ao marcar uma caixa, que é como o HTML e o CSS são estruturados mentalmente, com flex-box.
+            - Temos um Flex Container
+
+            FLEX CONTAINER
+                
+                main size = main start - main end
+                ----------------------------------------
+        cross   |    -------     -------     -------    |
+        size =  |   |       |   |       |   |       |   |   main axis (eixo principal)
+        cross   |   | flex  |   | flex  |   | flex  |   | ----------- >
+        start - |   | item  |   | item  |   | item  |   |
+        cross   |   |       |   |       |   |       |   |
+        end     |    -------     -------     -------    |
+                ----------------------------------------
+                                |
+                                | cross axis (eixo secundário)
+                                |
+                                v
+
+        - Main e Cross variam de acordo com a orientação definida
+-->
+
 <!DOCTYPE html>
 <html>
 
@@ -7,6 +39,45 @@
     <link rel="stylesheet" href="css/tag.css">
     <style>
         /* ... */
+
+        .big {
+            font-size: 1.5em;
+        }
+
+        .flex-container {
+            display: flex; /* Aplicando tecnologia, o main axis padrão é o row ( x ) */
+            flex-direction: column; /* Colocou o main axis como a column */
+            flex-direction: column-reverse; /* Inverte as ordem das box */
+            flex-direction: row-reverse; /* Além de inverter, ele alinha totalmente à esquerda */
+            flex-direction: row; /* Propriedade padrão */
+            width: 50%; /* O tamanho do conteiner foi reduzido, e os flex itens estão em overflow */
+            flex-wrap: wrap; /* Quando ocorre o everflow, os itens excedentes são enviados para próxima row */
+            flex-wrap: wrap-reverse; /* Muda o padrão de exibição dos items */
+            flex-flow: row wrap; /* Modifica ao mesmo tempo a direction e o wrap */
+            flex-flow: column-reverse nowrap; /* nowrap é o padrão do wrap, logo não enviaria para o próximo */
+            flex-flow: row wrap;
+            /* Propriedades em cima do start e end das axis */
+            justify-content: flex-start; /* utiliza o main-axis */
+            justify-content: flex-end; /* Joga todos os elementos para o end */
+            justify-content: center; /* Centraliza os items */
+            justify-content: space-around; /* Gera uma divisão igual entre os itens para cada cross axis */
+            flex-direction: row-reverse;
+            justify-content: space-between; /* Deixa um espaço somente entre os items */
+
+            /* Cross Axix */
+            align-items: stretch; /* Alinhamento padrão do align para flex-box */
+            align-items: baseline; /* Alinha de acordo com a base das fontes, ou seja o 3 fica na msm altura que os outros */
+            align-items: flex-start; /* Alinha no cross start */
+            align-items: flex-end; /* Alina no cross end */
+            align-items: center; /* Centraliza no centro do cross start e end */
+
+            /* Mais de uma linha */
+            align-content: flex-start;
+            align-content: flex-end;
+            align-content: center;
+            align-content: space-around;
+            align-content: space-between;
+        }
     </style>
 </head>
 

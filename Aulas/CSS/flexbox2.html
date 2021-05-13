@@ -7,6 +7,64 @@
     <link rel="stylesheet" href="css/tag.css">
     <style>
         /* ... */
+        .flex-container {
+            display: flex;
+            height: 300px;
+            width: 600px;
+        }
+
+        /* Aplicando determinado CSS no terceiro filho do container */
+        .flex-container div:nth-child(3) {
+            background-color: indianred;
+            /* Permite manipular a ordem dos elementos, todos por padrão possuem o order: 0; */
+            order: 1; /* Ao utilizar order: 1, estamos definindo ele como posteriormente a 0 */
+            order: 0; /* Voltando para a order: 0, será exibido como desempate a ordem do HTML */
+            order: -1; /* Coloca a ordem menor que 0, movendo para frente */
+            align-self: center; /* Modificar a formato específico para determinado item */
+            align-self: flex-end; /* Coloca no final do cross axis */
+            align-self: flex-start; /* Coloca no início do cross axis */
+            align-self: stretch; /* Valor default */
+        }
+
+        .flex-container div {
+            /*
+                Existe um espaço dentro do flex container, e existe o flex-grow, que define a
+                lógica de como ocupar o espaço sobrando.
+
+                Flex Grow
+                    - É definido um peso para todos os elementos
+                    - O tamanho que sobra é divido pela soma dos pesos
+                    - Em seguida é distribuido esse valor para cada item de acordo com o peso
+            */
+            width: 100px; /* Cada div irá ocupar 100px */
+            flex-grow: 0; /* Os elementos com peso 0 não cresce */
+            flex-grow: 1;
+        }
+
+        /* A busca pelo elemento sempre leva em consideração a posição no HTML */
+        .flex-container div:nth-child(2) {
+            flex-grow: 2;
+        }
+
+        .flex-container {
+            width: 430px;
+        }
+
+        .flex-container div{
+            /*
+                Comportamento calculado da mesma forma que o Flex Grow, porém
+                ao invés de aumentar o tamanho para ocupar o espaço, o shrink
+                diminui os itens para caber todos no conteiner.
+                OBS: Tomar cuidado com o tamanho do content, pois ele não reduz
+                mais do que o próprio tamanho do content
+            */
+            flex-shrink: 1;
+        }
+
+        .flex-container div:nth-child(2) {
+            flex-shrink: 4;
+        }
+
     </style>
 </head>
 

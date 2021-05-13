@@ -24,7 +24,7 @@
             margin: 8px;
         }
 
-        .cabecalho img {
+        .logo img {
             width: 230px;
             height: 40px;
         }
@@ -49,8 +49,9 @@
         .menu a {
             box-sizing: border-box;
             text-decoration: none;
-            color: #fff;
             padding: 25px;
+            border-radius: 30px;
+            color: white;
         }
 
         .menu a:hover {
@@ -69,11 +70,20 @@
             text-decoration: none;
             color: #fff;
             padding: 25px;
+            border-radius: 30px;
         }
 
         .autenticacao a:hover {
             color: black;
             background-color: skyblue;
+        }
+
+        .autenticacao .botao {
+            border-radius: 30px;
+        }
+
+        .destaque {
+            background-color: red;
         }
 
         .menu-toggle {
@@ -82,6 +92,21 @@
             top: 20px;
             right: 2%;
             display: none;
+        }
+
+        @media (max-width: 792px) {
+            .menu li {
+                display: none;
+            }
+            .menu-toggle {
+                display: inline-block;
+            }
+        }
+
+        @media (max-width: 1000px) {
+            .autenticacao {
+                display: none;
+            }
         }
         
     </style>
@@ -101,16 +126,16 @@
         <nav class="menu">
             <ul>
                 <li>
-                    <a href="#inicio">Início</a>
+                    <a class='white black' href="#inicio">Início</a>
                 </li>
                 <li>
-                    <a href="#cursos">Cursos</a>
+                    <a class='white black' href="#cursos">Cursos</a>
                 </li>
                 <li>
-                    <a href="#sobre">Sobre</a>
+                    <a class='white black' href="#sobre">Sobre</a>
                 </li>
                 <li>
-                    <a href="#contato">Contato</a>
+                    <a class='white black' href="#contato">Contato</a>
                 </li>
             </ul>
         </nav>
@@ -121,7 +146,32 @@
     </header>
 
     <script>
-        // ...
+
+        // É possível resolver o problema de manter o hover ativo após o click, utilizando uma
+        // classe selected no CSS, e no JS adicionar ou remover essa classe no elemento desejado
+        // No exemplo do professor, existe essa solução. Utilizando menu a.selected
+        window.addEventListener('hashchange', (e) => {
+
+            const novaHash = new URL(e.newURL).hash
+            // Muito interessante a forma de acessar um elemento através do querySelector
+            // sendo possível fazer o seguinte, selecionar dentro do .menu um elemento com
+            // determinado atributo
+            // document.querySelector(`.menu [href='#${oldURL}']`)
+            const ulMenu = document.getElementsByClassName('menu')[0].children[0]
+            
+            for (let i of ulMenu.children){
+                const li = i.getElementsByTagName('a')[0]
+                if (li.hash == novaHash) {
+                    li.style.backgroundColor = 'skyblue'
+                    li.style.color = 'black'
+                }
+                else {
+                    li.style.backgroundColor = ''
+                    li.style.color = ''
+                }
+            }
+        })
+
     </script> 
 
 </body>

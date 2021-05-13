@@ -7,6 +7,23 @@
     <link rel="stylesheet" href="css/tag.css">
     <style>
         /* ... */
+        .flex-container {
+            display: flex;
+            flex-direction: column;
+            flex-direction: row;
+        }
+
+        .flex-container div {
+            flex-basis: 100px; /* Determina a largura no main axis para cada item */
+            /* Mesmo alterando a width, a flex-basis tem preferência, caso a main axis seja no eixo x */
+            width: 200px;
+        }
+
+        .flex-container div:nth-child(4) {
+            /* Define o grow, shrink e o basis */
+            flex: 3 6 100px
+        }
+
     </style>
 </head>
 
