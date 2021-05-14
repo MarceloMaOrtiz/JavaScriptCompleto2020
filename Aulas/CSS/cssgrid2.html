@@ -1,3 +1,7 @@
+<!--
+    Ao invés de utilizar grid-gap, grid-row-gap ou grid-column-gap, utilizar gap, row-gap ou column-gap
+-->
+
 <!DOCTYPE html>
 <html>
 
@@ -20,6 +24,34 @@
             border: solid 5px dodgerblue;
             background: #fff;
         }
+
+        /*
+            Quando é criado colunas ou linhas que não div para ocupar, o espaço na tela continua alocado,
+            mas fica invisível, já que não há conteúdo para ele
+        */
+        body {
+            display: grid;
+            grid-template-columns:
+                [inicio] 1fr
+                [metade-1 meio-1] 1fr
+                [metade-2 meio-2] 1fr
+                [fim]; /* Dessa forma é possível nomear as linhas, atribuindo 1 ou mais nomes */
+            grid-template-rows: repeat(3, 1fr);
+            column-gap: 20px; /* Coloca um espaço entre as colunas */
+            row-gap: 20px; /* Coloca um espaço entre as linhas */
+            gap: 50px 10px; /* Coloca 50px na linha e 10px na coluna */
+            gap: 30px; /* Coloca o espaço de 30px tanto nas linhas quanto nas colunas */
+        }
+
+        .d1 {
+            grid-column-start: metade-2;
+            grid-column-end: fim;
+            grid-column: meio-1 / fim; /* Dessa forma é possível atribuir o valor tanto pro start quanto end */
+            grid-row: 1 / span 2;
+            /* grid-area (área da grid) -> row-start column-start row-end column-end */
+            grid-area: 1 / meio-1 / span 3 / fim;
+        }
+
     </style>
 </head>
 

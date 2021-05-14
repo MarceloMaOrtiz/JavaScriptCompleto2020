@@ -54,6 +54,31 @@
         /* ==================== */
         /* Solução com Flex Box */
         /* ==================== */
+
+        .cabecalho {
+            display: flex;
+            align-items: center;
+            flex-grow: 0;
+        }
+
+        /*.cabecalho aside{ */
+            /* Um possível solução para alinhar a autenticação na direita */
+            /* margin-left: auto;  */
+
+            /*
+                Uma melhor solução é setar todos os flex-grow para 0, logo nenhum item será expandido,
+                e como queremos jogar a autenticação para a direita, é só crescermos o elemento anterior
+                fazendo então o .menu com flex-grow:1
+            */
+        /* } */
+
+        .menu {
+            flex-grow: 1;
+        }
+
+        .menu ul{
+            display: flex;
+        }
     </style>
 </head>
 

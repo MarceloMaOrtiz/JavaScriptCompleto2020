@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Selecionar Elementos #01</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body class="conteudo exercicio">
+    <div id="primeiro">#primeiro</div>
+    <div>Segundo</div>
+    <div class="terceiro ultimo">.terceiro .ultimo</div>
+    <script>              
+        document.getElementById('primeiro').classList.add('destaque') // Adiciona a classe destaque que está no estilo.css
+
+        const divs = document.getElementsByTagName('div')
+        console.log(divs)
+        console.dir(divs)
+        Array.from(divs).forEach(e => e.classList.remove('destaque')) // Remove a classe do elemento
+
+        const divsArray = [...divs]
+        divsArray.forEach(e => e.classList.add('destaque')) // Inserar a classe objeto por objeto
+
+        const ultimosElementos = document.getElementsByClassName('ultimo') // Retorna uma lista de elementos que possuem determinada classe
+        console.dir(ultimosElementos)
+
+        for (let e of ultimosElementos) { // É possível percorrer um HTMLCollection com o for of
+            e.classList.remove('destaque')
+        }
+
+    </script>
+</body>
+</html>
