@@ -1,3 +1,6 @@
+<!--
+    Exemplo de drag-and-drop
+-->
 </html>
 <!DOCTYPE html>
 <html>
@@ -32,6 +35,11 @@
             margin: 10px;
             vertical-align: middle;
             text-align: center;
+            /* 
+                Isso está prevenindo um bug na hora de arrastar, que acontecia ao arrasta elementos
+                selecionados, abrindo novas abas como ips estranhos
+            */
+            user-select: none;
         }
     </style>
 </head>
@@ -46,6 +54,35 @@
     <div class="direita" wm-dropzone></div>
     <script>
         // ...
+        const itens = document.querySelectorAll('[wm-dropzone] .item')
+        itens.forEach((item, index) => {
+            item.draggable = true
+            item.id = item.id || `draggable-item-${index}` // Cria os ids para cada item
+            item.ondragstart = e => {
+                console.log(e)
+                // dataTransfer é utilizado para guardas os dados que estão sendo arrastados durante um operação
+                // de drag and drop. setData está setando o dado item-id dentro do dataTranfers com o id do target.
+                // Isso é feito para controlar quais itens estão sendo movidos, e não criar diversos ids para um
+                // mesmo elemento
+                e.dataTransfer.setData('item-id', e.target.id)
+            }
+        })
+
+        const dropZones = document.querySelectorAll('[wm-dropzone]')
+        dropZones.forEach(dropzone => {
+            dropzone.ondragover = e => e.preventDefault() // Necessário fazer isso para alterar o comportamente do drop
+            dropzone.ondrop = e => {
+                console.log(e)
+                // Nesse ponto é justificado o motivo da criação do id no ondragstart com o setData
+                const id = e.dataTransfer.getData('item-id') // id do item arrastado
+                const item = document.getElementById(id) // 
+                // Esse append está colocando o item arrastado dentro do elemento que esta sendo dropado
+                // permitindo assim colocar um item dentro do outro
+                // e.target.appendChild(item)
+                // O ideal nesse caso específico seria colocar o item dentro de uma dropzone
+                dropzone.appendChild(item)
+            }
+        })
     </script>
 </body>
 

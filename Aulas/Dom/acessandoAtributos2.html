@@ -10,6 +10,10 @@
 <body class='conteudo exercicio'>
     <div>
         <label for="compras">Compras</label>
+        <!--
+            Atributos criados com o data-NOME-ATRIBUTO são tratados ligeiramente diferentes dos sem.
+            É possível imprimir os atributos com data utilizando o .dataset
+        -->
         <ul id="compras" destino='escritório' data-urgencia="5">
             <li>Café</li>
             <li>Água</li>
@@ -17,7 +21,33 @@
         </ul>
     </div>
     <script>
-        // ...
+        // Era possível utilizar o id compara, mas a ideia foi ver exemplos diferentes para os seletores
+        const lista = document.querySelector('div ul[destino="escritório"]')
+        console.log('Elemento "ul"..............')
+        console.log('childNodes', lista.childNodes)
+        console.log('destino', lista.destino) // Sendo um classe criado por nós, não será possível acessá-la dessa forma
+        console.log('getAttribute', lista.getAttribute('destino')) // Dessa forma é possível pegarmos atributos criado por nós
+        console.log('hasAttribute', lista.hasAttribute('destino'))
+        // Dessa forma é possível alterar o value de um atributo, antes escritório, agora empresa
+        lista.setAttribute('destino', 'empresa')
+        // É possível além de alterar um atributo existente, criar novos atributos
+        lista.setAttribute('status', 'aberto')
+        lista.removeAttribute('destino')
+        console.log(lista.dataset) // É uma DOMStringMap que retorna os atributos que possuem data-
+        // Quando criado um novo atributo, exemplo data-new-atributo, automaticamente quando for tranformado um DOMStringMap
+        // Será convertido para newAtributo
+        lista.setAttribute('data-new-atributo', 'testando')
+        console.log(lista.dataset)
+        lista.dataset.newAtributo = 'Muito Foda'
+        console.log(lista.dataset)
+        // O problema é que quando formos utlizar o getAttribute será necessário utilizar a nomeclatura inteira
+        console.log(lista.getAttribute('data-new-atributo'))
+
+        // Cuidados
+        const label = document.querySelector('label')
+        console.log(label.for) // Não funciona
+        console.log(label.htmlFor) // Uma forma de acessar o atributo dentro da tag
+        console.log(label.getAttribute('for')) // Melhor, menos problema para acessar
     </script>
 </body>
 

@@ -13,6 +13,19 @@
     </div>
     <script>
         // ...
+        const div = document.querySelector('div')
+        // innerHTML -> todo coteúdo presente dentro do elemento é alterado
+        div.innerHTML = 'Texto Alterado'
+        // outerHTML -> Todo conteúdo presente no elemento é alterado, inclusive o próprio elemento
+        // div.outerHTML = 'Texto Alterado'
+        // insertAdjanceHTML -> Insere o conteúdo de acordo com o primeiro parâmetro
+        div.insertAdjacentHTML('beforeBegin', '<p>Antes Início</p>') // Antes do início
+        div.insertAdjacentHTML('afterBegin', '<p>Depois Início</p>') // Depois do início
+        div.insertAdjacentHTML('beforeEnd', '<p>Antes Fim</p>') // Antes do início
+        div.insertAdjacentHTML('afterEnd', '<p>Depois Fim</p>') // Depois do fim
+
+        console.log(div.innerHTML) // Inclui as tags, classes ...
+        console.log(div.innerText) // Retorna somente o texto
     </script>
 </body>
 

@@ -7,10 +7,43 @@
 </head>
 <body class="conteudo exercicio">
     <div id="primeiro">#primeiro</div>
-    <div>Segundo</div>
+    <div wb-attrib>Segundo</div>
     <div class="terceiro ultimo"><span wb-attrib>.terceiro .ultimo</span></div>
     <script>              
-        // ...
+        // Diferentemente do seletores específicos usado no selecionandoElementos1.html, o querySelector precisa especificar
+        // o elementos. # -> id; . -> classe; [a=b] -> atributos. É possível ainda selecionar elementos que não possuem determinada
+        // classe.
+        // querySelector retorna sempre o primeiro elemento encontrado.
+        document.querySelector("#primeiro").classList.add('destaque')
+
+        const selecionar = seletor => {
+            // querySelectorAll não retorna uma collection e sim um NodeList, e é possível utilizar forEach, mesmo não sendo um Array.
+            // Portanto para utilizar determinada funções ainda será necessário converter em Array.
+            // querySelectorAll retorna todos os elementos encontrados
+            document.querySelectorAll(seletor).forEach(e => e.classList.add('destaque'))
+        }
+        const deselecionar = seletor => {
+            document.querySelectorAll(seletor).forEach(e => e.classList.remove('destaque'))
+        }
+
+        selecionar('div')
+
+        deselecionar('*')
+        selecionar('.terceiro.ultimo') // Seleciona quem possue as duas classes, a ordem das classes no elemento não importa
+
+        deselecionar('*')
+        selecionar(':not(#primeiro)') // É possível utilizar o not com o querySelector
+
+        deselecionar('*')
+        // Selectiona os primeiros filhos de algum elemento. Nesse caso temos como primeiro filho do body a div com id=primeiro,
+        // span wb-attib como primeiro filho da div terceiro ultimo
+        selecionar(':nth-child(1)')
+        
+        deselecionar('*')
+        selecionar('div:nth-of-type(1)') // Seleciona o primeiro elemento do tipo div
+
+        deselecionar('*')
+        selecionar('[wb-attrib]') // Selecionando a partir de um atributo
     </script>
 </body>
 </html>

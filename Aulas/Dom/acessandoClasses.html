@@ -13,6 +13,21 @@
     </div>
     <script>
         // ...
+        const classes = document.querySelector('div').classList // Tipo DomTokenList
+        classes.add('destaque')
+        classes.remove('destaque')
+        classes.toggle('destaque') // Alterna, se não existe cria, se não remove
+        console.log(classes.contains('destaque')) // Verifica se determinada classe pertence ao elemento
+        console.log(classes.length)
+        classes.toggle('destaque')
+        console.log(classes.length)
+
+        classes.add('destaque1')
+        classes.add('destaque2')
+
+        for (let c of classes) // Possível percorres as classes
+            console.log(c)
+
     </script>
 </body>
 

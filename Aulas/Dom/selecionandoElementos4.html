@@ -23,6 +23,40 @@
     </div>
     <script>
         // ...
+        function log() {
+            console.log(this)
+        }
+
+        // Dessa forma estamos adicionando a função log em todos esses tipos de dados
+        HTMLCollection.prototype.log = log
+        HTMLElement.prototype.log = log
+        NodeList.prototype.log = log
+        Node.prototype.log = log
+
+        // A ideia é mostra como é possível percorrer a árvore DOM, percorrendo na direção do pai ou filho
+        const lista = document.querySelector('div ul') // Retorna o elemento
+        lista.parentNode.log() // parentNode retorna o pai da lista
+
+        // retorna todos os filhos do elemento em uma NodeList.
+        // OBS. também capta espaços entre as tag
+        lista.childNodes.log() 
+
+        const primeiro = lista.firstChild
+        primeiro.log() // Imprime justamente o espaço
+        primeiro.nextSibling.log() // Imprime o próximo filho
+
+        const ultimo = lista.lastChild
+        ultimo.log() // Imprime justamente o espaço
+        ultimo.previousSibling.log() // Imprime o filho anterior
+
+        // Retorna todos os filhos do elemento em um HTMLCollection. Mas sem os espaços entre as tags.
+        lista.children.log()
+        lista.firstElementChild.log() // Diferentemente do firstChild, não trás os espaços entre as tags
+        lista.lastElementChild.log()
+        lista.parentNode.previousElementSibling.log() // É possível utilizar funções em conjuntos
+        lista.parentNode.nextElementSibling.log()
+
+        document.querySelectorAll('div ul li').log() // Pega de forma mais direta os elementos que queremos
     </script>
 </body>
 

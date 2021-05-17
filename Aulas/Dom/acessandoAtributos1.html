@@ -16,6 +16,29 @@
     </div>
     <script>
         // ...
+        const img = document.querySelector('img')
+        console.log('getAttibute', img.getAttribute('src')) // Dessa forma é possível utilizar uma string
+        console.log('src', img.src) // Dessa forma só é possível se temos o o name do atributo como tal
+        console.log("['src']", img['src'])
+        console.log('alt', img.alt)
+        
+        console.log('Elemento "img"...........')
+        // É possível verficarmos todos os tipos de nodeTypes na documentação
+        // https://developer.mozilla.org/en-US/docs/Web/API/Node/nodeType
+        console.log('NodeType', img.nodeType) // nodeType retorna o tipo do node. 1 = Elemento; 2 = Atributo
+        console.log('NodeName', img.nodeName)
+
+        const src = img.getAttributeNode('src') // Diferentemente do getAttribute, pega o nó inteiro, tendo mais informações
+        console.log('Atributo "srd"...........')
+        console.log('NodeType', src.nodeType)
+        console.log('NodeName', src.nodeName)
+        console.log('NodeValue', src.nodeValue)
+
+        const link = document.querySelector('a')
+        console.log('Elemento "a"............')
+        console.log('href', link.href)
+        console.log('firstChild.nodeType', link.firstChild.nodeType)
+        link.firstChild.nodeValue = 'Novo Texto' // É possível alterar o valor do texto a partir do value do nó
     </script>
 </body>
 

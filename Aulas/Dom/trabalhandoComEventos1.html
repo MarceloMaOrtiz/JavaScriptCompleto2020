@@ -1,3 +1,8 @@
+<!--
+    Padrão de projeto muito utilizado na Web
+        Observer -> Dependência um-para-muitos entre objetos. Dessa forma, quando um objeto mudar seu estado,
+        todos os seus dependentes serão avisados e atualizados automaticamente.
+-->
 <!DOCTYPE html>
 <html>
 
@@ -9,9 +14,32 @@
 
 <body class="conteudo exercicio">
     <div>
-        <a href="https://google.com.br">Google</a>
+        <!--
+            É possível manipular o evento diretamente na tag HTML. Nesse caso é obrigatório o uso
+            do event, não podendo ser somente ' e ' , por exemplo.
+            <a href="https://google.com.br" onclick='navegarEm5s(event)'>Google</a>
+
+            Não é interessante utilizar uma classe para manipular eventos. É mais interessantes utilizar
+            um atributo personalizado, pois o HTML ignora esse atributo, portanto fica um pouco mais claro
+            que provavelmente terá um JS trabalhando com esse dado
+        -->
+        <a espera-um-pouco href="https://google.com.br">Google</a>
     </div>
     <script>
         // ...
+        function navegarEm5s(e) {
+            e.preventDefault()
+            console.log('Saindo em 5s...')
+            setTimeout(() => {
+                // target é o elemento HTML que disparou determinado evento
+                const link = e.target
+                window.location.href = link.href
+            }, 5000)
+        }
+
+        // const a = document.querySelector('a')
+        const a = document.querySelector('[espera-um-pouco]')
+        // navegarEm5s -> Atribui a função || navegarEm5s() -> Chama a função
+        a.onclick = navegarEm5s
     </script>
 </body>

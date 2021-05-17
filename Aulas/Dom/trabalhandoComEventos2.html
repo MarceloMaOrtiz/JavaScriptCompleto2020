@@ -10,6 +10,18 @@
 <body class="conteudo exercicio">
     <div>Elemento</div>
     <script>
-        // ...
+        // O Objetivo é permitir mover a div com o mouse na tela
+        const item = document.querySelector('div')
+        item.style.position = 'absolute' // Altera para permitir mover de forma absoluta a div na tela
+
+        item.onmousemove = e => {
+            // e.taget === item
+            item.style.cursor = 'move' // Altera o ícone do mouse para um mãosinha
+            if (e.buttons) { // Controla o valor do mouse, se tiver 0 o butão não está clicado
+                // Está alterando os px do top de acordo com a posição do mouse menos a altura/largura da div / 2
+                e.target.style.top = `${e.clientY - (item.clientHeight / 2)}px`
+                e.target.style.left = `${e.clientX - (item.clientWidth / 2)}px`
+            }
+        }
     </script>
 </body>

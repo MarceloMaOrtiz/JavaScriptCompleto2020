@@ -1,3 +1,13 @@
+<!--
+    Interessante utilizar atributos personalizados sem o data- ( atributo='A' ) para atributos que
+    provavelmente não terão seu valor alterado. Enquando utilizar os atributos com data- (data-atributo='B')
+    para variáveis que serão alteradas constantementes.
+    Vale lembrar que um atributo data- vale a pena ser separa pelo dash-case, pois é no HTML. Já
+    no JS o melhor é utilizar o dash-case. Ao utilizar um elementoDOM.dataset todos os atributos que
+    possuem data- serão separados, e nome com dash-case se tornarão automaticamente camel-case. Ex.
+    data-atributo-grande -> atributoGrande
+-->
+
 <!DOCTYPE html>
 <html>
 
@@ -16,7 +26,22 @@
         </ul>
     </div>
     <script>
-        // ...
+        // Como acessar os atributos personalizados com a notação ' . '
+        const lista = document.querySelector('#compras')
+        
+        // Somente leitura - Não é possíve alterar os atributos utilizando .attributes
+        console.log(lista.attributes)
+        console.log(lista.attributes[0])
+        console.log(lista.attributes.destino)
+        console.log(lista.attributes['data-urgencia'])
+        lista.attributes['data-urgencia'] = 11 // Não alterou
+        console.log(lista.attributes['data-urgencia'])
+
+        // datasets = É possível alterar
+        console.log(lista.dataset)
+        console.log(lista.dataset.urgencia)
+        lista.dataset.urgencia = 10
+        console.log(lista.dataset.urgencia)
     </script>
 </body>
 

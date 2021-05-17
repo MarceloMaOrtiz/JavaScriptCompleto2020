@@ -1,0 +1,18 @@
+* {
+    box-sizing: border-box;
+}
+
+[wm-flappy] {
+    position: relative;
+    border: solid 2px azure;
+    width: 700px;
+    height: 480px;
+}
+
+#bird-box {
+    position: relative;
+    border: solid 2px azure;
+    height: 100%;
+    width: calc(100%/24);
+    left: 50%;
+}

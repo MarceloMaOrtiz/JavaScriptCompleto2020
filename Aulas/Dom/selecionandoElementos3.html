@@ -22,6 +22,11 @@
 
 <body class="conteudo exercicio">
     <h1>Formulário</h1>
+    <!--
+        Propriedade name -> Importante utilizar dentro dos campos de entrada do formulário
+            Os parâmetros names (q, hl) utilizados no formulário para fazer a pesquisa não foi
+            escolhido de forma aleatória, é exatamente como a pesquisa do google suporta
+    -->
     <form name="pesquisa" action="http://www.google.com.br/search">
         <input type="text" name="q" placeholder="Digite o termo...">
         <select name="hl">
@@ -32,6 +37,15 @@
     </form>
     <script>
         // ...
+        console.log(document.forms) // Retorna o HTMLCollection dos formulários
+        console.log(document.forms[0]) // Retorna o primeiro elemento do HTMLCollection
+        console.log(document.getElementsByName('pesquisa')) // Retorna um nodeList
+        console.log(document.getElementsByTagName('pesquisa')) // Retorna um HTMLCollection
+        console.log(document.pesquisa) // É possível pesquisar diretamente pelo name ao utilizar document
+        console.log(document.pesquisa.q) // Entrou dentro do formulário pesquisa e buscou o name q
+        document.pesquisa.q.value = 'Linux' // Alterou via JS o valor do q dentro do form pesquisa
+        // document.pesquisa.hl.value = 'en-us' // O value utilizado foi o mesmo dentro do value do elemento
+        console.log(document.pesquisa.hl.selectedIndex) // Retorna o index do elemento select selecionado
     </script>
 </body>
 

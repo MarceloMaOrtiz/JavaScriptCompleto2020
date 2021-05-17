@@ -12,16 +12,16 @@
     <script>              
         document.getElementById('primeiro').classList.add('destaque') // Adiciona a classe destaque que está no estilo.css
 
-        const divs = document.getElementsByTagName('div')
-        console.log(divs)
-        console.dir(divs)
-        Array.from(divs).forEach(e => e.classList.remove('destaque')) // Remove a classe do elemento
+        const divs = document.getElementsByTagName('div') // Retorna uma collection. Não é possível iterar collection com funções de array
+        // console.log(divs)
+        // console.dir(divs)
+        Array.from(divs).forEach(e => e.classList.remove('destaque')) // Converte collection para array. Remove a classe do elemento
 
-        const divsArray = [...divs]
+        const divsArray = [...divs] // Usa destructuring para tranformar a collection em um array iterável
         divsArray.forEach(e => e.classList.add('destaque')) // Inserar a classe objeto por objeto
 
         const ultimosElementos = document.getElementsByClassName('ultimo') // Retorna uma lista de elementos que possuem determinada classe
-        console.dir(ultimosElementos)
+        // console.dir(ultimosElementos)
 
         for (let e of ultimosElementos) { // É possível percorrer um HTMLCollection com o for of
             e.classList.remove('destaque')

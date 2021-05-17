@@ -10,6 +10,39 @@
 <body class='conteudo exercicio'>
     <script>
         // ...
+        const body = document.querySelector('body')
+        const div1 = document.createElement('div')
+        div1.classList.add('destaque')
+        div1.innerHTML = 'Primeiro'
+
+        const div2 = document.createElement('div')
+        div2.setAttribute('wm-atributo', 'valor')
+        div2.innerHTML = 'Segundo'
+
+        const p = document.createElement('p')
+        p.innerHTML = 'Terceiro'
+        const div3 = document.createElement('div')
+        console.log(div3, typeof div3)
+        div3.appendChild(p) // Anexa como último filho do elemento 
+
+        body.appendChild(div1)
+        body.appendChild(div2)
+        body.appendChild(div3)
+
+        const texto = document.createTextNode('Antes...')
+        console.log(texto, typeof texto)
+        // insertBefore -> Seleciona o elemento que quer inserir dentro, os parâmetros são o elemento a
+        // se inserido e o segundo antes de quer desejamos inserir
+        div3.insertBefore(texto, div3.childNodes[0])
+
+        // Clonando um elemento -> true copia o elemento e todos os elementos filhos, false só o elemento
+        const div4 = div3.cloneNode(true)
+        body.appendChild(div4)
+        const div5 = div3.cloneNode(false)
+        // As cores estão sendo controladas de acordo com a ordem das divs no arquivo css
+        body.appendChild(div5)
+        body.removeChild(div3)
+        body.removeChild(div5)
     </script>
 </body>
 
