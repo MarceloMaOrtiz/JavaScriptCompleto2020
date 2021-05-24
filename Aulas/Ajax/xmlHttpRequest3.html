@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>XMLHttpRequest #03</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Estados</h1>
+
+    <script>
+        function ajax(config) {
+            const xhr = new XMLHttpRequest()
+            xhr.open(config.metodo, config.url, true)
+            // ao inves de utilizar método onload será utilizado o onreadystatechange
+            // Sempre será chamado quando o status da requisição mudar, existe uma sequências
+            // de estados para cada requisição, numeradas
+            xhr.onreadystatechange = e => {
+                // 4 é justamento o valor para quando a requisição foi finalizada
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        // Isso define que estamos trabalhando com dados XML e quando os dados
+                        // chegando na função sucesso, os objetos já chegam resolvidos em um tipo
+                        // documents (praticamente um HTML)
+                        config.sucesso(xhr.responseXML)
+                    } else if (xhr.status >= 400) {
+                        config.erro({
+                            codigo: xhr.status,
+                            texto: xhr.statusText
+                        })
+                    }
+                }
+            }
+
+            xhr.send()
+        }
+
+        ajax({
+            url: "dados/estados.xml",
+            metodo: "get",
+            sucesso(resposta) {
+                // Função também busca na DOM, so que dessa vez a do XML
+                const estados = resposta.getElementsByTagName('estado')
+                // reduce está tranformando o array em um único elemento
+                const itens = Array.from(estados).reduce(
+                    // HTML é um acumulador para o reduce. Importante passar ao final da função
+                    // o '' que é uma string vazia como valor inicial para o reduce
+                    (html, estado) => html + `<li>${estado.attributes.nome.value}</li>`, ''
+                )
+                document.body.insertAdjacentHTML('beforeend', `<ul>${itens}</ul>`)
+            },
+            erro(e) {
+                const msg = document.createTextNode(`${e.codigo}: ${e.texto}`)
+                document.body.appendChild(msg)
+            }
+        })
+    </script>
+</body>

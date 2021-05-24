@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>XMLHttpRequest #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Estados</h1>
+
+    <script>
+        // Foi criado uma função para fazer requisições AJAX, de forma bem crua. A função recebe os parâmetros
+        // através do objeto config. Na maioria das vezes esse função já será implementada e iremos
+        // consumi-la
+        function ajax(config) {
+            const xhr = new XMLHttpRequest()
+            // Abrindo uma requisição do tipo GET. Recebendo em config, um parâmetro url
+            // true para dizer que será assyncrono
+            xhr.open(config.metodo, config.url, true)
+
+            xhr.onload = e => {
+                if (xhr.status === 200) {
+                    // Sucesso é uma função que será instanciada dentro de config, enviando a resposta
+                    config.sucesso(xhr.response)
+                }
+                else if (xhr.status >= 400) {
+                    // Mesmo caso que para sucesso, só que para o erro
+                    config.erro({
+                        codigo: xhr.status,
+                        texto: xhr.statusText
+                    })
+                }
+            }
+
+            xhr.send()
+        }
+
+        function criarTabela(estados) {
+            const linhas = estados.map(estado => {
+                const tdId = document.createElement('td')
+                tdId.innerHTML = estado.id
+
+                const tdNome = document.createElement('td')
+                tdNome.innerHTML = estado.nome
+
+                const tdSigla = document.createElement('td')
+                tdSigla.innerHTML = estado.sigla
+
+                const tr = document.createElement('tr')
+                tr.appendChild(tdId)
+                tr.appendChild(tdNome)
+                tr.appendChild(tdSigla)
+
+                return tr
+            })
+
+            const tabela = document.createElement('table')
+            linhas.forEach(linha => tabela.appendChild(linha));
+
+            document.body.appendChild(tabela)
+        }
+
+        // O objeto config da função ajax acima é justamente esse obj ajax, contendo url, metodo, funtion sucesso
+        // e function erro
+        ajax({
+            url: "dados/estados.json",
+            metodo: "GET",
+            sucesso(resposta) {
+                const estados = JSON.parse(resposta)
+
+                // Foi comentado, pois foi enviado para fora, forma interessante de analisar a
+                // facilidade de transformar um código sequencial em funcional
+                // const linhas = estados.map(estado => {
+                //     const tdId = document.createElement('td')
+                //     tdId.innerHTML = estado.id
+
+                //     const tdNome = document.createElement('td')
+                //     tdNome.innerHTML = estado.nome
+
+                //     const tdSigla = document.createElement('td')
+                //     tdSigla.innerHTML = estado.sigla
+
+                //     const tr = document.createElement('tr')
+                //     tr.appendChild(tdId)
+                //     tr.appendChild(tdNome)
+                //     tr.appendChild(tdSigla)
+
+                //     return tr
+                // })
+
+                // const tabela = document.documentElement('table')
+                // linhas.forEach(linha => tabela.appendChild(linha));
+
+                // document.body.appendChild(tabela)
+
+                criarTabela(estados)
+            },
+            erro(e) {
+                const msg = document.createTextNode(`${e.codigo}: ${e.texto}`)
+                document.body.appendChild(msg)
+            }
+        })
+    </script>
+</body>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Fetch API #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Estados</h1>
+
+    <script>
+        const url = 'dados/estados.json'
+        // fetch é uma função do próprios JS, que está vindo para substituir o XMLHttpRequest
+        // fetch trabalha com promisse, por isso o .then
+        fetch(url)
+            .then(resp => resp.json())
+            // Como nesse caso estamos trabalhando com JSON não é necessário fazer o trabalho
+            // nos dados como foi feito no xmlHttpRequest3.html
+            .then(estados => {
+                const itens = estados.reduce(
+                    (html, estado) => html + `<li>${estado.nome}</li>`, ''
+                )
+                return itens
+            })
+            .then(html => document.body.insertAdjacentHTML('beforeend', `<ul>${html}</ul>`))
+    </script>
+</body>
