@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Modificando HTML #02</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src='js/jquery.js'></script>
+</head>
+
+<body class='conteudo exercicio'>
+    <h1>Modificando HTML #02</h1>
+    <div id='div1'>1</div>
+    <div id='div2'>2</div>
+    <div id='div3'>3</div>
+    <p class='numero'>4</p>
+    <p class='numero'>5</p>
+
+    <script>
+        $('#div1').append(', 2') // Coloca na frente
+        $('#div1').prepend('0, ') // Coloca atrás
+
+        $('<span>, 3</span>').appendTo('#div1') // append determinado elemento em outro elemento
+        $('<span>-1, </span>').prependTo('#div1')
+
+        $('#div2').before('<p>Antes 2</p>')
+        $('#div2').after('<p>Depois 2</p>')
+
+        $('<p>Antes 3</p>').insertBefore('#div3')
+        $('<p>Depois 3</p>').insertAfter('#div3')
+
+        // $('p.numero').wrap('<div>') // wrap -> Envolve (empacote) o p.numero com a <div> elemento por elemento
+        $('p.numero').wrapAll('<div id="div4">') // wrapAll -> Envolve todos os elementos encontrado com a <div id="div">
+        $('#div4').empty() // Limpa todo o elemento selecionado, removendo os elementos dentro
+        $('#div3, #div4').prev().remove() // Pega o prev de cada elemento selecionado e remove todo o elemento
+
+        // $('<div>Substituto</div>').replaceAll('body > p') // Todos os 'body > p' serão substituídos pelo elemento criado
+        // $('body > p').replaceWith('<div>Substituto</div>') // Os elementos serão substituidos pelo elemento criado
+        $('body > p').replaceWith(function () { // Html do elemento Atual está sendo colocado dentro do elemento criado
+            return $('<div>').html($(this).html()).append('!!!') // this é o elemento atual. 
+        })
+    </script>
+</body>

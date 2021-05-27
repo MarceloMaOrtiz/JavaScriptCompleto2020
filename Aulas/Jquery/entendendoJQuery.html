@@ -1,0 +1,50 @@
+<!--
+    Existe algumas formas de obter o jQuery
+        - Fazendo o download do próprio site https://jquery.com/
+        - Instalando a partir do npm
+            - $ npm init -y -> npm install --save jquery
+        - Obtendo a partir de uma cdn, utilizando portando uma tag script
+    Nesse módulo será utilizado o jquery.js -> Que é o próprio jQuery
+-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Entendendo jQuery</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src="js/jquery.js"></script>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Entendendo jQuery</h1>
+    <div>1</div>
+    <div>2</div>
+
+    <script>
+        // $ ou jQuery -> jQuery. É possível utilizar de diversar formas. Utilizando com .FUNCAO ou (FUNCAO)...
+        // Seleciona as divs existentes e aplica o hide, show e fadeOut depois de 5s para cada, com animação
+        $('div').hide(5000).show(5000).fadeOut(5000)
+        // .get(i) -> pega o elemento DOM selecionado pelo $
+        // OBSERVAÇÃO INTERESSANTE -> Quando é utilizado o $('div') é possível utilizar funções específicar no elemento,
+        // mas quando utilizamos o get(i) temos o próprio elemento DOM, portanto não será possível utilizar essas funções.
+        // Isso é possível e funciona com a utilização de Herança, mas não é utilizado dessa forma pelo jQuery. Aqui temos
+        // a utilização de 'decorators', que permite fazer uma extensão dos objetos, adicionando novas funcionalidade sem
+        // a necessidade de herança. Quando utilizada $('div') temos um decorator para identificar o obj DOM e partir daí
+        // o jQuery desenvolve novas funções, construindo (wrap) assim  temos um objeto que engloba o obj DOM. Quando
+        // utilizado o get(i) pegamos de fato o objeto DOM englobado. Portanto as funções jQuery não trabalham diretamente
+        // com o objeto da DOM e sim um objeto que engloba esse objeto da DOM
+        console.log($('div').get(0))
+        console.log($.isEmptyObject({})) // Verifica se determinado objeto é vazio
+        console.log(jQuery.inArray(3, [1, 2, 3])) // Retorna o indíce que encontra o número. -1 caso não encontrar
+
+        // Exemplo de como é simples criar plugins para o jQuery, extendo funcionalidades
+        $.fn.fundoVerde = function () {
+            this.css('background-color', 'green')
+            return this // Com esse retorno é possível usar o conceito de chanelling (encadeamento)
+        }
+
+        $('body').fundoVerde().hide(1000).show(3000)
+    </script>
+</body>

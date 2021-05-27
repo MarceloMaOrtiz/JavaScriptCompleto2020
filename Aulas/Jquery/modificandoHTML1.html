@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Modificando HTML #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src='js/jquery.js'></script>
+</head>
+
+<body class='conteudo exercicio'>
+    <h1>Modificando HTML #01</h1>
+    <div id='conteudo1'></div>
+    <div id='conteudo2'></div>
+    <div id='conteudo3'></div>
+    <div>Sem ID</div>
+
+    <script>
+        // Conteudo 1
+        $('#conteudo1').append('<p>1</p>') // Adicionou determinado elemento dentro do elemento buscado
+
+        // Conteudo 2
+        const elementos = [
+            $('<li></li>').append('Arroz'), // Utilizando '<tag>' ou '<tag></tag>' temos a criação de elementos
+            $('<li>').append('Feijão'),
+            $('<li>').append('Carne')
+        ]
+
+        // Possíve criar os elementos dessa forma, além de já adicionar os elementos <li> dentro do <ul> com prepend ou append
+        const lista = $('<ul><li>Sorvete</li></ul>').prepend(elementos)
+
+        $('#conteudo2').append(lista)
+
+        // Conteudo 3
+        $('#conteudo3')
+            .append('<h1>1</h1>')
+            .append('<h1>2</h1>', '<h1>3</h1>')
+            .prepend(['<h1>-1</h1>', '<h1>0</h1>'])
+            .prepend('<h1>-2</h1>')
+        
+        $('#conteudo3').html('<h1>1 2 3</h1>') // Substitui todo o elemento
+        $('#conteudo3').text('<h1>1 2 3</h1>') // Substitui todo o elemento, sem interpretar como html
+
+        // Alterando todos
+        $('div[id]').html('<strong>Todos!</strong>') // Todas as divs que tem o atributo id
+    </script>
+</body>

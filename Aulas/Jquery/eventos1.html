@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Eventos #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src='js/jquery.js'></script>
+    <style>
+        input {
+            font-size: 2em;
+        }
+    </style>
+</head>
+
+<body class='conteudo exercicio'>
+    <h1>Eventos #01</h1>
+    <!-- Terá um evento para pegar a posição do mouse -->
+    <div id='posicao'></div>
+    <!-- Terá evento para captar o click do mouse -->
+    <div id='cliques'>Cliques: 0</div>
+    <input type="text" placeholder="Cor de Background">
+
+    <script>
+        function mostrarPosicaoMouse(e) {
+            $('#posicao').html(`x: ${e.clientX} y: ${e.clientY}`)
+        }
+
+        // Evento no jQuery não é igual ao evento disparado na própria DOM. Ele possui algumas facilidades,
+        // os eventos, basicamente, possuem uma padronização, tendo algumas propriedades sempre presentes.
+
+        // on() é uma função para registar um evento dentro do jQuery, passando o primeiro parâm como string,
+        // referenciando o evento, e o segundo parâm a função que será executada
+        $('body').on('mousemove', mostrarPosicaoMouse)
+
+        // Tomar cuidado com o this quando for utilizar função arrow e função normal, pois o this varia quando
+        // utilizado uma função normal, enquanto no caso da arrow o this é sempre fixo, que estará logo antes
+        // da chamada da função
+        $('#posicao').mouseover(e => { // Dispara quando o mouse entra em determinado elemento
+            $('body').off('mousemove', mostrarPosicaoMouse) // Desativa determinado evento 
+        })
+
+        $('#posicao').mouseleave(e => {
+            $('body').on('mousemove', mostrarPosicaoMouse) // Ativa determinado evento 
+        })
+
+        let cliques = 0
+        $('body').click(e => {
+            $('#cliques').html(`Cliques: ${++cliques}`)
+        })
+
+        const backgroundOriginal = $('body').css('background-color')
+
+        $('input').keyup(function (e) {
+            const valor = $(this).val() // Forma de pegar o valor pelo jQuery
+            if (valor.match(/#[\da-fA-F]{3,6}/)){
+                $('body').css('background-color', valor)
+            } else {
+                $('body').css('background-color', backgroundOriginal)
+            }
+        })
+
+        // Essa função foi copiada da de cima e alterado de function normal para arrow function, para
+        // mostrar que o this na arrow function representa o this de fora, nesse caso window
+        // $('input').keyup(e => {
+        //     console.log(e.target.value)
+        //     const valor = $(this).val() // Forma de pegar o valor pelo jQuery
+        //     console.log(valor)
+        // })
+    </script>
+</body>

@@ -1,0 +1,62 @@
+<!-- Desafio: Pegar o array de pessoas e criar uma tabela -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Modificando HTML #03</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src='js/jquery.js'></script>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px; /*Espaçamento nas colunas*/
+        }
+    
+    </style>
+</head>
+
+<body class='conteudo exercicio'>
+    <h1>Modificando HTML #03</h1>
+    <div id='conteudo'></div>
+
+    <script>
+        const pessoas = [
+            { nome: 'Ana', nota: 9.1 },
+            { nome: 'Bianca', nota: 8.4 },
+            { nome: 'Carlos', nota: 7.6 },
+            { nome: 'Julia', nota: 9.7 }
+        ]
+
+        // $(function(){ // É executada quando toda a DOM estiver finalizada
+        $(document).ready(function() { // É executada quando toda a DOM estiver finalizada
+            // Minha solução
+            $('<thead><tr><th>Nome</th><th>Nota</th></tr></thead>').css('font-size', '36px').appendTo('#conteudo')
+
+            $('<tbody></tbody>').appendTo('#conteudo')
+
+            pessoas.forEach( obj => {
+                $('tbody').append('<tr></tr>')
+                const linha = `<td>${obj.nome}</td><td>${obj.nota}</td>`
+                $('tbody tr:last').append(linha)
+            })
+            // Fim solução
+
+            // // Solução professor
+            // const linhas = pessoas.map(aluno => {
+            //     const tdNome = $('<td>').html(aluno.nome)
+            //     const tdNota = $('<td>').html(aluno.nota)
+            //     return $('<tr>').append(tdNome, tdNota)
+            // })
+
+            // const tabela = $('<table>').append(linhas)
+            //     .css('border', 'solid 5px')
+
+            // $('#conteudo').append(tabela)
+            // // Fim solução
+        })
+    </script>
+</body>
