@@ -11,6 +11,10 @@
 <body class='conteudo exercicio'>
     <h1>Plugin #01</h1>
     <div>
+        <!--
+            Padrão muito conhecido por double moustache {{ }}, utilizado para colocar códigos que
+            serão interpretados por um framework
+        -->
         {{ 1 + 2 }}
         Texto 1
         {{ 3 ** 3 }}
@@ -22,6 +26,39 @@
     </div>
 
     <script>
-        // ...
+        // eval() uma função que consegue fazer alguns tipos de tranformações, ex. 
+        // eval('2 + 4') -> 6;
+        // eval('(function { return "Opa" }') -> "Opa"
+        // Tomar cuidado com o uso do eval(). Possível entrada para códigos maliciosos.
+
+        // Primeira coisa é colocar o plugin dentro da variável '$' para proteger
+        (function($) {
+            // Adicionando uma função no jQuery, conceito de plugin
+            $.fn.interpretar = function() {
+                const retirarChaves = s => s.substring(2, s.length - 2)
+                const conteudo = $(this).html()
+                const expressoesComChaves = conteudo.match(/\{\{.+\}\}/g)
+                const expressoes = expressoesComChaves.map(retirarChaves)
+
+                // Tomar cuidado com o uso do eval(). Possível entrada para códigos maliciosos.
+                const resultados = expressoes.map(e => eval(e))
+
+                let conteudoFinal = conteudo
+
+                // Interessante: Percorre todas as expressões, alterando os valores antigos pelos novos
+                for(let i = 0; i < expressoesComChaves.length; i++){
+                    conteudoFinal = conteudoFinal.replace(
+                        expressoesComChaves[i], resultados[i]
+                    )
+                }
+
+                $(this).html(conteudoFinal)
+
+                // Esse retorno é muito importante para possibilitar o encadeamento com outras funções
+                return this
+            }
+        })(jQuery)
+
+        $('div').interpretar()
     </script>
 </body>
