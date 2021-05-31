@@ -1,0 +1,13 @@
+//  "~bootstrap...", o ' ~ ' faz com que procure dentro no node_modules.
+//  Do modo que está escrito será importado todos os arquivos presentes no
+//  bootstrap, era possível importar somente o que seria utilizado de fato
+@import "~bootstrap/scss/bootstrap";
+
+//  Sobreescrevendo o nome de uma variável do sass do font-awesome para dizer onde
+//  ele irá encontrar o diretório das fontes */
+$fa-font-path: "~font-awesome/fonts";
+//  Importando as fontes
+@import "~font-awesome/scss/font-awesome";
+
+//  Importando o custom para que a partir desse arquivo, seja possível gerar o CSS final
+@import "custom";

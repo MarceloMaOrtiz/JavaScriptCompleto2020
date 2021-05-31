@@ -8,12 +8,23 @@
 
 <nav class="mb-5">
     <!--
+        O sistema de grid do Bootstrap, versão 4, é baseado no flex-box, portanto é possível utilizar algumas propriedades
+        do flex-box para auxiliar na manipulação
+
         aria-label
             aria -> Accessble Read Internet Application
                 Propriedades para tornar o HTML mais acessível
         breadcrumb
             Faz com que desenhe uma linhas informando a navegação do usuário
                 Home / Grid
+
+        Não é recomendado uso de tabela para estrutura a aplicação, pois existem softwares que utilizam
+        da semântica da tag para aplicar algumas soluções. Por isso faz mais sentido utilizar, por exemplo, grid
+
+        Bootstrap trouxe uma revolução de responsividade
+            - Pega a largara (width) do elemento e divide em 12 colunas, a partir disso, decide quanto dessa área
+            será ocupada. O 12 foi escolhido por ser um número estratégico, podendo dividir em 12, 6, 4, 3, 2. E para
+            auxiliar na responsividade é possível escolher quanto irá usar de acordo com o tamanho da tela.
     -->
     <ol class="breadcrumb">
         <li class="breadcrumb-item">
@@ -33,31 +44,117 @@
     <hr>
 
     <!-- Grid Básica -->
+    <!--
+        Inicia-se com container, linhas e colunas
+            - container -> Ocupa uma área fix
+            - container-fluid -> Irá ocupar a tela inteira
+            - row -> identifica a linha
+            - col -> determina o tamanho do disposito que irá valer a coluna (documentação)
+    -->
+    <div class="container-fluid">
+        <div class="row">
+            <!-- como não foi nada especificado nas colunas, será dividido o espaço de forma igualitária -->
+            <div class="col bg-primary">1</div>
+            <div class="col bg-danger">2</div>
+            <div class="col bg-warning">3</div>
+            <div class="col bg-info">4</div>
+            <div class="col bg-secondary">5</div>
+        </div>
+        <div class="row mt-3"> <!-- mt - Margin Top -->
+            <!-- Nesse caso, temos a coluna 2 e 3 ocupando, 4 e 5 colunas, e a restante foi dividida entre 1 e 4-->
+            <div class="col bg-primary">1</div>
+            <div class="col-4 bg-danger">2</div>
+            <div class="col-5 bg-warning">3</div>
+            <div class="col bg-info">4</div>
+        </div>
+    </div>
 
     <h1 class="mt-5">2. Grid Responsiva</h1>
     <hr>
 
     <!-- Grid Responsiva -->
 
+    <!--
+        A ideia conta em, ocupar um determinado número de colunas de acordo com o tamanho do dispositivo
+            - col -> Dispositivo extra-small
+            - col-12 -> A coluna irá ocupar as 12 colunas
+            - col-sm-6 -> Irá ocupar 6 colunas para dispositivos small
+            - col-md-4 -> Irá ocupar 4 colunas para dispositivos medium
+            - col-lg-2 -> Irá ocupar 2 colunas para dispositivos large
+            - col-xl-1 -> Irá ocupar 1 coluna para dispositivos extra-large
+
+    -->
+    <div class="container-fuild">
+        <div class="row">
+            <div class="col-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 bg-primary">1</div>
+            <div class="col-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 bg-danger">2</div>
+            <div class="col-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 bg-warning">3</div>
+            <div class="col-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 bg-info">4</div>
+            <div class="col-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 bg-success">5</div>
+            <div class="col-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 bg-secondary">6</div>
+            <div class="col-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 bg-primary">7</div>
+            <div class="col-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 bg-danger">8</div>
+            <div class="col-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 bg-warning">9</div>
+            <div class="col-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 bg-info">10</div>
+            <div class="col-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 bg-success">11</div>
+            <div class="col-12 col-sm-6 col-md-4 col-lg-2 col-xl-1 bg-secondary">12</div>
+        </div>
+    </div>
+
     <h1 class="mt-5">3. Quebra de Linha</h1>
     <hr>
 
     <!-- Quebra de Linha -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-3 bg-primary">1</div>
+            <div class="col-3 bg-danger">2</div>
+            <div class="w-100"></div> <!-- w-100 faz com que a div ocupa toda a largura restante, alterando assim a linha -->
+            <div class="col-3 bg-warning">3</div>
+        </div>
+    </div>
 
     <h1 class="mt-5">4. Ordem</h1>
     <hr>
 
     <!-- Ordem -->
+    <!-- Order varia de (nao preenchido) a 12. Quanto menor o numero do order mais a esquerda estará -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-4 order-5 bg-primary">1</div>
+            <div class="col-4 order-12 bg-danger">2</div>
+            <div class="col-4 order-1 bg-warning">3</div>
+        </div>
+    </div>
 
     <h1 class="mt-5">5. Offset</h1>
     <hr>
 
     <!-- Offset -->
+    <!--
+        Deslocamento -> Possibilita ocupar determinadas colunas sem seguir necessáriamente a ordem.
+        É possível ainda determinar o Offset de acordo com os dispositivos. Quando um dispositivo é
+        selecionado, o valor atribuido será utilizado por ele e os tamanhos acima
+    -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-3 offset-md-7 bg-primary">1</div>
+            <div class="col-4 offset-md-3 bg-danger">2</div>
+            <div class="col-6 offset-md-1 bg-warning">3</div>
+        </div>
+    </div>
 
     <h1 class="mt-5">6. Alinhamento</h1>
     <hr>
 
     <!-- Alinhamento -->
+    <div class="container-fluid">
+        <div class="row h-300"> <!-- definiu altura (height) da linha com 300px -->
+            <div class="col-4 align-self-end bg-primary">1</div>
+            <div class="col-4 align-self-center bg-danger">2</div>
+            <div class="col-4 align-self-start bg-warning">3</div>
+        </div>
+    </div>
 </div>
 
 <style>
