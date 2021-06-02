@@ -3,7 +3,7 @@ import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'font-awesome/css/font-awesome.min.css'
 
-import { HashRouter } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 
 import Logo from '../components/template/Logo'
 import Nav from '../components/template/Nav'
@@ -11,14 +11,14 @@ import Routes from './Routes'
 import Footer from '../components/template/Footer'
 
 function propsApp(props) {
-    return <HashRouter>
+    return <BrowserRouter>
         <div className="app">
             <Logo></Logo>
             <Nav></Nav>
             <Routes></Routes>
             <Footer></Footer>
         </div>
-    </HashRouter>
+    </BrowserRouter>
 }
 
 export default propsApp

@@ -1,9 +1,11 @@
 import './NavItem.css'
 
+import { Link } from 'react-router-dom'
+
 function propsNavItem(props) {
-    return <a href={props.url}>
+    return <Link to={props.url}>
         <i className={`fa fa-${props.icon}`}></i> {props.item}
-    </a>
+    </Link>
 }
 
 export default propsNavItem

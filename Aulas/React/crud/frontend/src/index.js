@@ -4,10 +4,14 @@ import './index.css';
 import App from './main/App';
 import reportWebVitals from './reportWebVitals';
 
+import { Router, Route } from 'react-router'
+
+import history from "./history"
+
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Router history={history}>
+    <Route path='/' component={App} />
+  </Router>,
   document.getElementById('root')
 );
 
