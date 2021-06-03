@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <script src="js/vue.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title>Relatório de Vendas</title>
+</head>
+
+<body>
+
+    <script>
+        new Vue ({
+            el: "#app",
+            data: {
+                title: 'Relátorio de Vendas',
+                sales: null
+            },
+            methods: {
+                getSales() {
+                    fetch('/data/sales.json')
+                        .then(resp => resp.json())
+                        .then(data => console.log(data))
+                }
+            },
+            // Quando a intância estiver pronto essa função é chamada
+            mounted() {
+                this.getSales()
+            }
+        })
+    </script>
+</body>
+
+</html>

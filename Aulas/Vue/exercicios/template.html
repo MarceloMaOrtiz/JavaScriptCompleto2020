@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Template</title>
+    <link rel="stylesheet" href="/css/estilo.css">
+    <script src="/js/vue.min.js"></script>
+</head>
+<body class="exercicio">
+    <div id="app">
+        <!--
+            É possível colocar o template diretamente na Vue Instance
+        -->
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                titulo: "VueJS",
+                subtitulo: "Framework Progressivo"
+            },
+            template:
+            // Caso removermos a '<div>' o '<h3>' não seria renderizado, algo parecido
+            // com o que ocorre no 'jsx', com React era gerado um erro, no Vue não é renderizado.
+            // lá era possível utilizar tags do próprio React para controlar o problema, aqui é
+            // necessário a utilização de alguma '<tag>', por exemplo '<fragment>'
+            `
+                <div>
+                    <h1>{{ titulo }}</h1>
+                    <h3>{{ subtitulo }}</h3>
+                </div>
+            `
+        })
+    </script>
+</body>
+</html>

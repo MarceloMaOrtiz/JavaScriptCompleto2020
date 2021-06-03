@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Binding</title>
+    <link rel="stylesheet" href="/css/estilo.css">
+    <script src="/js/vue.min.js"></script>
+</head>
+<body class="exercicio">
+    <div id="app">
+        <!-- não é clicável -->
+        <p>{{ link }}</p>
+        <!-- é clicavel, mas não é considerado a url de fato, e sim a string -->
+        <p><a href="{{ link }}">Canal?</a></p>
+        <!--
+            Conceito de Diretiva: Norma de Procedimento
+                ' v-bind: ' ou ' : ' -> faz com que a informação utilizada pelo Vue interpole corretamente
+                ' b-model ' -> Trabalha com alteração do data nas duas direções - Two Way Data Binding
+        -->
+        <p><a v-bind:href="link">Canal =D</a></p>
+        <p><a :href="link">Canal ;D</a></p>
+        <p>
+            <span>v-model on </span><input type="text" v-model="nome"><br>
+            <span>v-model off </span><input type="text" :value="nome"><br>
+            <span>{{ nome }}</span>
+        </p>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                nome: "Maria",
+                link: "https://youtube.com/cod3rcursos"
+            },
+            watch: {
+                nome(novoValor) {
+                    console.log("Algum Processamento")
+                    this.nome = novoValor.toUpperCase()
+                }
+            }
+        })
+    </script>
+</body>
+</html>

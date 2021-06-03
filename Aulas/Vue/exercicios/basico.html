@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Conceitos Básicos</title>
+    <link rel="stylesheet" href="/css/estilo.css">
+    <script src="/js/vue.min.js"></script>
+</head>
+<body class="exercicio">
+    <!--
+        Essa app será utilizado para o conceito de template.
+        Vue Instance - Instância do Vue
+            - No momento que é criado uma instância do Vue é associada a
+            instância a um treco HTML, e esse trecho passa a ser controlado
+            pelo Vue. Portanto teremos o Vue manipulando a DOM de determinado
+            trecho HTML
+            - Não um mecanismo próprio do Vue para fazer a comunicação entre duas
+            instâncias, mas é possível utilizando JS
+    -->
+    <div id="app">
+        <p>1) {{ 2 + 2 }}</p>
+        <p>2) {{ "teste".toUpperCase() }}</p>
+        <p>3) Produto: {{ nome }}, R${{ preco }}, {{ desconto * 100 }}%</p>
+        <p>4) {{ horaCerta() }}</p>
+        <!-- Vale observar que com computed temos a função referenciada e não chamada -->
+        <p>5) R${{ precoComDesconto }}</p>
+    </div>
+    <script>
+        // Função construtora que recebe um obj para configurar o framework
+        new Vue({
+            // el -> element é o seletor do html que será manipulado
+            el: "#app",
+            // data -> objeto que possibilita o envio de parâmetros para serem
+            // utilizados dentro do bloco selecionado
+            data: {
+                nome: "Caneta",
+                preco: 6.89,
+                desconto: 0.15
+            },
+            // methods -> permite o envio de métodos que poderão ser envocados
+            methods: {
+                horaCerta() {
+                    return new Date().toLocaleString()
+                }
+            },
+            // computed -> valores computados, calculados
+            computed: {
+                precoComDesconto() {
+                    return this.preco * (1 - this.desconto)
+                }
+            }
+        })
+    </script>
+</body>
+</html>

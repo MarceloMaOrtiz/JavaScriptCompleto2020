@@ -1,11 +1,14 @@
 {
-    "users": [{
-        "id": 1,
-        "name": "Arthur Oliveira",
-        "email": "aoliveira@cod3r.com.br"
-    }, {
-        "id": 2,
-        "name": "Maria Julia da Silva",
-        "email": "mjds@empresa.com"
-    }]
+  "users": [
+    {
+      "name": "Marcelo",
+      "email": "marcelo_smin@yahoo.com.br",
+      "id": 1
+    },
+    {
+      "name": "Funcionando Muito bem",
+      "email": "irado@hotmail.com",
+      "id": 2
+    }
+  ]
 }

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Diretiva Personalizada</title>
+    <link rel="stylesheet" href="/css/estilo.css">
+    <script src="/js/vue.min.js"></script>
+</head>
+<body class="exercicio">
+    <div id="app">
+        <!--
+            Nesse exemplo está sendo criada uma nova diretriz cujo objetivo é inverter
+            determinada palavra
+        -->
+        <input type="text" v-model="nome">
+        <div v-inverter="nome"></div>
+    </div>
+    <script>
+        Vue.directive('inverter', {
+            // componentUpdated() -> capta quando um componente é atualizado, na var el
+            // temos o elemento relacionado e o binding armazena o valor, no caso dentro de "nome"
+            componentUpdated(el, binding) {
+                const invertido = binding.value
+                    .split('')
+                    .reverse()
+                    .join('')
+                el.innerHTML = invertido
+            }
+        })
+
+        new Vue({
+            el: "#app",
+            data: { nome: ''}
+        })
+    </script>
+</body>
+</html>

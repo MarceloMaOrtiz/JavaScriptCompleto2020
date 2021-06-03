@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Eventos</title>
+    <link rel="stylesheet" href="/css/estilo.css">
+    <script src="/js/vue.min.js"></script>
+</head>
+<body class="exercicio">
+    <div id="app">
+        <!--
+            Conceito de Diretiva: Norma de Procedimento
+                ' v-on:EVENT="METHOD" ' ou ' @EVENT="METHOD" ' -> Capta eventos e dispara um método
+        -->
+        <p>{{ contador }}</p>
+        <p>
+            <button v-on:click="add">+ 1</button>
+            <button @click="contador--">- 1</button>
+        </p>
+        <p @mousemove="atualizarPosicao">
+            Coordenadas: {{ x }}, {{ y }}
+            <span @mousemove.stop>Aqui PARA !</span>
+        </p>
+        <p>Somento com Enter <input type="text" @keyup.enter="alerta"></p>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                contador: 0,
+                x: 0,
+                y: 0
+            },
+            methods: {
+                add() {
+                    this.contador++
+                },
+                atualizarPosicao(e) {
+                    this.x = e.clientX
+                    this.y = e.clientY
+                },
+                alerta() {
+                    alert('Enter!')
+                }
+            }
+        })
+    </script>
+</body>
+</html>
