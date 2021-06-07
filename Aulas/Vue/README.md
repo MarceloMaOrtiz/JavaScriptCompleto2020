@@ -7,3 +7,9 @@ Será referenciado o Vue
 
 ## Projetos
 Será utilizado o Client Vue
+
+## Instalação do Vue/CLI global e VSCode Extension Vetur
+- $ sudo npm i-g @vue/cli
+
+## Criação do projeto Calculator
+- $ vue create calculator
