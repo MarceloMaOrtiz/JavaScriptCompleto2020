@@ -4,7 +4,22 @@
 
 ### Arquivos
 <b>'tsconfig.json'</b> -> Configura questões de compilação do código TypeScript
-<b>'angular.json'</b> -> Arquivo de configuração do projeto. Uma mudança feita no arquivo, 'inlineTemplate' e 'inlineStyle' setados para false, com essa alteração teremos os arquivos .html e .css em arquivos separados e teremos um arquivo ts que irá referênciar ambos.
+<b>'angular.json'</b> -> Arquivo de configuração do projeto. Uma mudança feita no arquivo, 'inlineTemplate' e 'inlineStyle' setados para false, com essa alteração teremos os arquivos .html e .css em arquivos separados e teremos um arquivo ts que irá referênciar ambos. Essa configuração inicial veio dessa forma por inicializar o projeto, utilizando o cli do angular, com a opção --minimal. Com isso temos dentro da pasta '/src/app' os arquivos .ts sendo utilizados inline, ou seja, html, css no mesmo arquivo
+<b>'/assets'</b> -> Armazena arquivos de imagens, fontes...
+<b>'/environments</b> -> Local para armazenar as variáveis de ambiente
+
+## Angular/CLI proporciona os comando NG
+
+### Instalação do material.
+- $ ng add @angular/material
+
+### Gerando Component. Já cria o componente e regista dentro do módulo, "src/app/app.module.ts". Como o HTML, CSS e JS não é inline, serão gerado 3 arquivos
+- $ ng generate component %PATH% ou $ ng g c %PATH%
+
+### Importar componentes que serão utilizados em "src/app.module.ts"
+
+# BUG LOCO #
+Apareceu um bug no arquivo "src/app/components/template/nav/*.html". Htmls idênticos estão tendo comportamentos diferentes, um funciona, enquanto outro não.
 
 # Setup Angular
 
