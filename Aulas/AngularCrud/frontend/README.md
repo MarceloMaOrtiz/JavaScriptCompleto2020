@@ -18,6 +18,21 @@
 
 ### Importar componentes que serão utilizados em "src/app.module.ts"
 
+### Oganização dos arquivos
+##### 'src/app/components' -> Tudo aquilo que for trecho de componenetes que podem ser reutilizáveis
+##### 'src/app/views' -> Seria uma tela "inteira"
+
+### Gerando Diretivas. É criado o arquivo 'src/app/%PATH%/nome.directive.ts', e o 'src/app/app.module.ts' é atualizado
+- $ ng generate directives %PATH% ou ng g d %PATH%
+
+### Arquivo modelo para o TS ler os dados criado em 'src/app/PATH'
+
+### Gerar Services. É criado um service dentro de 'src/app/%PATH%'
+- $ ng generate services %PATH% ou ng g s %PATH%
+
+### Utilização de uma biblioteca do Material, os Schematics. Foi criado com nome 2
+- $ ng generate @angular/material:table %PATH%
+
 # BUG LOCO #
 Apareceu um bug no arquivo "src/app/components/template/nav/*.html". Htmls idênticos estão tendo comportamentos diferentes, um funciona, enquanto outro não.
 
