@@ -1,8 +1,16 @@
 import { Component } from '@angular/core';
 
 @Component({
+  // Define o serletor que será utilizado dentro do HTML para carregar
+  //  esse componente
   selector: 'app-root',
   templateUrl: 'app.component.html'
+  // Esse template foi comentado, pois inicialmente como foi utilizado a opção
+  //  minimal na criação do projeto, a configuração inlineTemplate e inlineStyle
+  //  vieram como true. Desse forma tanto o html quanto o css foram feitos
+  //  dentro do ts.
+  // Portanto foi adicionado o templateUrl e criado o arquivo HTML na presente
+  //  pasta. Dessa forma temos o html separado do ts.
   // template: `
   //   <!--The content below is only a placeholder and can be replaced.-->
   //   <div style="text-align:center" class="content">

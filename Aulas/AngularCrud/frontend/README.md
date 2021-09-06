@@ -2,6 +2,43 @@
 
 # Aula
 
+### Instalando o CLI do Angular
+- npm i -g @angular/cli
+    - A partir do CLI será gerado o projeto, módulos e componentes
+
+### Criando projeto
+- ng new NOME PREFIXO --minimal
+    - PREFIXO padrão é app
+    - floag --minimal remove alguns arquivos
+
+### Iniciar projeto
+- npm start
+
+### Configurações alteradas
+- angular.json
+    - inlineTemplate: False
+    - inlineStyle: False
+        - Caso as opções mantenha true, será gerado um único arquivo para manter tanto o HTML quanto o CSS
+
+### Instalando componentes do Material
+- ng add @angular/material
+    - Prove diversos componentes e pré-configurações existentes para uso
+
+### Criando componente
+- ng generate component PATH || ng g c PATH
+    - Cria um determinado componente, criando os arquivos HTML, CSS e TS
+
+### Instalando componentes pertencentes ao Material
+- Necessário importar, e adicionar nos imports os componentes desejados
+    - Dessa forma está sendo construido as dependências entre os módulos.
+
+### Arquivos Estáticos
+- Normalmente coloca os arquivos dentro da pasta assets
+
+### Criando diretivas
+- ng genarate dictive PATH || ng g d PATH
+    - Cria o arquivo .ts no PATH e atualiza o app.module.ts
+
 ### Arquivos
 <b>'tsconfig.json'</b> -> Configura questões de compilação do código TypeScript
 <b>'angular.json'</b> -> Arquivo de configuração do projeto. Uma mudança feita no arquivo, 'inlineTemplate' e 'inlineStyle' setados para false, com essa alteração teremos os arquivos .html e .css em arquivos separados e teremos um arquivo ts que irá referênciar ambos. Essa configuração inicial veio dessa forma por inicializar o projeto, utilizando o cli do angular, com a opção --minimal. Com isso temos dentro da pasta '/src/app' os arquivos .ts sendo utilizados inline, ou seja, html, css no mesmo arquivo

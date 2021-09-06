@@ -68,6 +68,8 @@ import { MatSortModule } from '@angular/material/sort';
   ],
   // Dentro de providers é colocado os services, quando há a inteção de usá-lo fora do módulo
   providers: [],
+  // Seleciona exatamente qual será o componente responśavel por inicializar
+  //  a aplicação
   bootstrap: [AppComponent]
 })
 export class AppModule { }

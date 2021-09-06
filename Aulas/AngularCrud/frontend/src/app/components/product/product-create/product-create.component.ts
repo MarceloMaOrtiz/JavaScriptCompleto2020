@@ -18,14 +18,17 @@ export class ProductCreateComponent implements OnInit {
   product = {name: ''} as Product
 
   // Com esse parâmetro é possível importar o serviço que é um Injectable
-  constructor(private productService: ProductService, private router: Router) { }
+  constructor(
+    private productService: ProductService,
+    private router: Router) { }
 
   ngOnInit(): void {
   }
 
   createProduct(): void {
-    // Dispara o sinal para o Observable do create(). Subscribe() dispara o sinal quando a 
-    // resposta chega
+    // Dispara o sinal para o Observable do create(). Subscribe(), adiciona o
+    //  observable, fazendo com que ao disparar o sinal da resposta, as funções
+    //  dentro do subcribe são executadas
     this.productService.create(this.product).subscribe(() => {
       this.productService.showMessage('Produto Criado')
       this.router.navigate(['/products'])
