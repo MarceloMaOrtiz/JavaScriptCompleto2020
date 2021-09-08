@@ -12,18 +12,24 @@ import { Product } from '../product.model'
   styleUrls: ['./product-read2.component.css']
 })
 export class ProductRead2Component implements AfterViewInit {
+  // Decorator ViewChild -> Filho do template (view), que recebe o tipo de componente que
+  //  será selecionado e percorre o HTML em busca desse componente. Paginator, Sort e Table
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<Product>;
+  // O data source está sendo criado durante pelo constructor()
   dataSource: ProductRead2DataSource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'name'];
+  // Esses nomes precisam serem similares aos utilizados no HTML
+  displayedColumns = ['id', 'name', 'price'];
 
+  // Criado no momento que o componenete é criado
   constructor() {
     this.dataSource = new ProductRead2DataSource();
   }
 
+  // Depois que todos os componentes são carregados na tela, é executado esses comandos
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;

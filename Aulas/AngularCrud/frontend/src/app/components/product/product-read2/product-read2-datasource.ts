@@ -9,7 +9,7 @@ import { Product } from '../product.model'
 // TODO: replace this with real data from your application
 const EXAMPLE_DATA: Product[] = [
   {id: 1, name: 'Teste', price: 50},
-  {id: 1, name: 'Teste', price: 50},
+  {id: 2, name: 'Test2', price: 40},
 ];
 
 /**
@@ -19,6 +19,7 @@ const EXAMPLE_DATA: Product[] = [
  */
 export class ProductRead2DataSource extends DataSource<Product> {
   data: Product[] = EXAMPLE_DATA;
+  // O decorator presente em product-read2.component é responsávelpor inicializar essas variáveis
   paginator: MatPaginator | undefined;
   sort: MatSort | undefined;
 

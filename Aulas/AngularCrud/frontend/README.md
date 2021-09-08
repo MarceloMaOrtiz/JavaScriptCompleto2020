@@ -28,6 +28,14 @@
 - ng generate component PATH || ng g c PATH
     - Cria um determinado componente, criando os arquivos HTML, CSS e TS
 
+### Utilizando Schematics
+- ng generate @angular/material:table PATH
+    - app.Module é alterado automaticamente
+    - Possibilita a utilização da table com sort e numeração
+- Esse Módulo só foi utilizado como exemplo, portanto o HTML dele foi comentado
+    - O componente é o product-read2
+- O Schematics se
+
 ### Instalando componentes pertencentes ao Material
 - Necessário importar, e adicionar nos imports os componentes desejados
     - Dessa forma está sendo construido as dependências entre os módulos.
