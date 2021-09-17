@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -32,6 +32,14 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 
+import localePt from '@angular/common/locales/pt';
+import { registerLocaleData } from '@angular/common';
+import { ProductUpdateComponent } from './components/product/product-update/product-update.component';
+import { ProductDeleteComponent } from './components/product/product-delete/product-delete.component';
+
+// Registrando a Locale Data para ser utilizado pt-br, dessa forma será produzido o price
+//  utilizando ponto para as casas referentes a milhares
+registerLocaleData(localePt);
 
 @NgModule({
   // é Colocado os components, diretivas e os pipes
@@ -46,7 +54,9 @@ import { MatSortModule } from '@angular/material/sort';
     ForDirective,
     ProductCreateComponent,
     ProductReadComponent,
-    ProductRead2Component
+    ProductRead2Component,
+    ProductUpdateComponent,
+    ProductDeleteComponent
   ],
   imports: [
     BrowserModule,
@@ -67,7 +77,12 @@ import { MatSortModule } from '@angular/material/sort';
     MatSortModule
   ],
   // Dentro de providers é colocado os services, quando há a inteção de usá-lo fora do módulo
-  providers: [],
+  providers: [{
+    // Isso está sendo adicionado para utilizar uma biblioteca externa do prórprio angular
+    //  para auxiliar na formatação do price da tabela
+    provide: LOCALE_ID,
+    useValue: 'pt-br'
+  }],
   // Seleciona exatamente qual será o componente responśavel por inicializar
   //  a aplicação
   bootstrap: [AppComponent]

@@ -47,6 +47,9 @@
 - ng genarate dictive PATH || ng g d PATH
     - Cria o arquivo .ts no PATH e atualiza o app.module.ts
 
+### Observações
+- A respeito da paginação da tabela, surgiu um ponto muito interessante, que os dados já devem ir para o front-end paginados
+
 ### Arquivos
 <b>'tsconfig.json'</b> -> Configura questões de compilação do código TypeScript
 <b>'angular.json'</b> -> Arquivo de configuração do projeto. Uma mudança feita no arquivo, 'inlineTemplate' e 'inlineStyle' setados para false, com essa alteração teremos os arquivos .html e .css em arquivos separados e teremos um arquivo ts que irá referênciar ambos. Essa configuração inicial veio dessa forma por inicializar o projeto, utilizando o cli do angular, com a opção --minimal. Com isso temos dentro da pasta '/src/app' os arquivos .ts sendo utilizados inline, ou seja, html, css no mesmo arquivo
