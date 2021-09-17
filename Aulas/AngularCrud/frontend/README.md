@@ -47,6 +47,10 @@
 - ng genarate dictive PATH || ng g d PATH
     - Cria o arquivo .ts no PATH e atualiza o app.module.ts
 
+### Criando Service para auxiliar na atualização do titulo
+- Existem diversos padrões de projetos para dividir módulos e serviços
+    - $ ng g s components/template/header/header
+
 ### Observações
 - A respeito da paginação da tabela, surgiu um ponto muito interessante, que os dados já devem ir para o front-end paginados
 

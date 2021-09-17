@@ -9,6 +9,21 @@
       "id": 3,
       "name": "Sansung S20+",
       "price": "500"
+    },
+    {
+      "name": "Teste",
+      "price": "12312",
+      "id": 4
+    },
+    {
+      "name": "Ps4",
+      "price": "5000",
+      "id": 5
+    },
+    {
+      "name": "Sucesso",
+      "price": "120",
+      "id": 6
     }
   ]
 }
