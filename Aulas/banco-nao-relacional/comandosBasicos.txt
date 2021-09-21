@@ -1,0 +1,9 @@
+help -> Lista possíveis comando
+db. + TAB -> Lista os possíveis comandos
+show dbs -> Lista os DBs disponíveis
+use DB_NAME -> Mesmo sem o banco existir é possível alterar o DB
+db.createCollection('COLLECTION_NAME') -> Cria uma coleção, caso ela não exista
+    - mongoDB é Case Sensitive
+    - Sempre que não existir Document dentro de uma Collection, essa Collection não existirá
+show collections -> Lista as coleções existentes
+db.COLLECTION_NAME.drop() -> Exclui determinada tabela

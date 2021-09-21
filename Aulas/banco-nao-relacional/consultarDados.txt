@@ -1,0 +1,30 @@
+db.COLLECTION_NAME.find() -> Retorna os registros presentes no COLLECTION_NAME
+db.COLLECTION_NAME.find().pretty() -> Deixa o output com melhor visual
+db.COLLECTION_NAME.findOne() -> Retorna um Document
+
+- É possível passar filtros dentro dos finds
+db.COLLECTION_NAME.findOne({KEY: VALUE})
+db.COLLECTION_NAME.find({
+    $or: [{ -> Utiliza a lógica OR
+        KEY: VALUE
+    }, {
+        KEY: VALUE
+    }]
+}).pretty
+
+db.COLLECTION_NAME.find({FIELD: {$exists: true}})-> Verifica se está contido
+
+db.COLLECTION_NAME.find()
+    .skip(X) -> Pula X Documents
+    .limit(Y) -> Faz Consultas Paginadas, com Y Números de Documents
+
+db.COLLECTION_NAME.count() -> Retorna o número de Documents dentro da Collection.
+    Está ficando em desuso. Substituir por:
+db.COLLECTION_NAME.countDocuments()
+
+db.COLLECTION_NAME.find({KEY, VALUE}, {KEY: 0, KEY: 1, KEY: 1}) -> Primeiro parâmetro
+    é utilizado para o filtro dos dados, o segundo diz quais colunas serão utilizadas,
+    1 para trazer, 0 para remover, no caso do _id, o _id por padrão é sempre adicionado.
+
+db.COLLECTION_NAME.find({KEY, VALUE}, {"KEY.KEY": 1, _id: 0}) -> Nesse caso temos "KEY.KEY"
+    para identificar objetos dentro de Documents

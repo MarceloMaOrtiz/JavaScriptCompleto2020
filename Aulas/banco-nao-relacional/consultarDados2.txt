@@ -1,0 +1,33 @@
+Aggregation Pipeline Stages
+A teoria por trás das consultas seguem um conceito de Pipe, ou seja, o resultado de um filtro
+passa por outro filtro, que diminui a quantidade de dados, que passa por outro filtro, e assim
+por diante...
+
+API do Mongo utiliza o Dolar ($) como operadores, estágios, colunas...
+
+db.estados.aggregate([
+    { $project: { // Dentro do Project colocamos todos os atributos que desejamos projetar
+        nome: 1, "cidades.nome": 1, _id: 0
+    }}
+])
+
+Quando é utilizado o $ o mongo Interpola o valor. Portanto, quando utilizado do lado direito
+do objeto como um campo, é necessário interpolar esse valor, por não ser uma string
+db.estados.aggregate([
+    // Aqui estamos fazendo uma soma de toda a população contida nas cidades, e somando para
+    //  a variável população
+    { $project: {
+        populacao: {
+            $sum: "$cidades.populacao"
+        }, sigla: 1,
+        _id: 0
+    }}, { $group: { // Possibilita o agrupamento, populacao nesse caso foi criado no passo anterior
+        _id: null,
+        populacaoTotal: {
+            $sum: "$populacao"
+        }
+    }}, { $project: {
+        _id: 0,
+        populacaoTotal: 1
+    }}
+])

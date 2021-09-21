@@ -1,0 +1,6 @@
+db.estados.aggregate([
+    { $match: {"cidades.nome": "Sorocaba"}}, // Faz um filtro
+    { $unwind: "$cidades" }, // Gera um documento por cidades
+    { $match: {"cidades.nome": "Sorocaba"}},
+    { $project: {_id: "$cidades._id"}}
+]).pretty()

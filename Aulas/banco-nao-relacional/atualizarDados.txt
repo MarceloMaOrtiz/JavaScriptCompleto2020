@@ -1,0 +1,12 @@
+O primeiro atribulo é um filtro, o segundo o que queremos alterar. O método está
+em desuso, alterar para updateOne
+db.COLLECTION_NAME.update({KEY: VALUE}, {$set: {KEY: VALUE}}
+db.COLLECTION_NAME.updateOne({KEY: VALUE}, {$set: {KEY: VALUE}}
+
+Isso funciona tranquilamente quando não temos na KEY que representa um vetor
+nenhum dado existente. Caso utilizados um SET em um Vetor existente, esse vetor
+será todo alterado, nesses casos é possível utilizar PUSH, para adicionar um novo
+objeto
+db.COLLECTION_NAME.updateOne({KEY: VALUE}, {$set: {KEY: [{KEY: VALUE}, {KEY: VALUE}]}})
+
+db.COLLECTION_NAME.updateOne({KEY: VALUE}, {$push: {KEY: {KEY: VALUE}})

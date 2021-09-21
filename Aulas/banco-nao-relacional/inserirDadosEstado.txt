@@ -1,0 +1,18 @@
+db.COLLECTION_NAME.insert({nome: "Acre", sigla: "AC", regiao: "Norte"}) -> Cria um Document
+    dentro de uma Collection, mesmo se essa collection não existir
+db.COLLECTION_NAME.save({nome: "Alagoas", sigla: "AL", regiao: "Nordeste", populacao: 3322000})
+    -> Cria um Document dentro de uma Collection, podendo ter atributos diferentes. O comportamente
+    do insert e save, aparentemente, são iguais. OBS: Esse comando não funciona no mongosh
+db.COLLECTION_NAME.find() -> Retorna os registros presentes no COLLECTION_NAME
+db.COLLECTION_NAME.find().pretty() -> Deixa o output com melhor visual
+db.COLLECTION_NAME.insert({ -> Simulação do ENTER no CLI, possibilita inserir linhas abaixo
+    nome: "Rio de Janeiro",
+    sigla: "RJ",
+    regiao: "Sudeste",
+    cidades: [{ // Inserindo cidades dentro do estado do RJ
+        nome: "Niterói",
+        area: 133.9,
+        populacao: 487562
+    }]
+})
+db.help() -> Disponibiliza diversos métodos
