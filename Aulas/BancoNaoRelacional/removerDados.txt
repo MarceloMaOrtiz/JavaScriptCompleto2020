@@ -1,0 +1,20 @@
+Remove está entrando em desuso, trocar por deleteOne()
+db.COLLECTION_NAME.remove({KEY: VALUE})
+db.COLLECTION_NAME.deleteOne({KEY: VALUE})
+
+O segundo parâmetro do deleteOne é para remover somente 1 document, porém
+durante a aula o professor utilizar o remove, então resta a dúvida se é possível
+remover mais de 1 document com o deleteOne.
+Foi feito o teste, tentando excluir mais de 1 document sem utilizar o segundo
+parâmetro, e mesmo assim foi removido somente 1. Portante, vale analisar se o
+segundo parâmetro é a quantidade de documents a ser removido. Foi testado,
+tentando excluir dois documentos acrescentando no segundo parâmentro o valor 2,
+ainda assim foi excluido somente um document. Portanto a aula do professor está
+atrasada, e o segundo parâmetro não serve para isso
+Antigo -> db.COLLECTION_NAME.remove({KEY: { $exists: BOOL}}, 1)
+db.COLLECTION_NAME.deleteOne({KEY: { $exists: BOOL}})
+
+Remove o primeiro Document encontrando com valor menor que VALUE
+db.COLLECTION_NAME.deleteOne({KEY: { $lt: VALUE}})
+
+db.COLLECTION_NAME.deleteMany({KEY: { $lt: VALUE}})

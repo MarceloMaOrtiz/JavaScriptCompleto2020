@@ -7,7 +7,7 @@ Estado
 
 Cada Cidade deverá ter o atribulo _id <- ObjectId()
 
-db.COLLECTION_NAME.insert({
+db.estados.insertOne({
     nome: "São Paulo",
     sigla: "SP",
     regiao: "Sudeste",

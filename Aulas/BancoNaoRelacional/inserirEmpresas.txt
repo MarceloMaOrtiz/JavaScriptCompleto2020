@@ -1,0 +1,13 @@
+Utilizando Foreign Key de outras COLLECTION
+
+Nesse caso temos o id de um Estado
+db.empresas.insertOne({
+    nome: "Bradesco",
+    estadoId: ObjectId("614b49c1704d044d2775a5b3")
+})
+
+Nesse caso temos o id de uma cidade 
+db.empresas.insertOne({
+    nome: "Vale",
+    cidadeId: ObjectId("614b49c1704d044d2775a5b2")
+})

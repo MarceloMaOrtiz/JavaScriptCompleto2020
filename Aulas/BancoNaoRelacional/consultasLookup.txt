@@ -1,0 +1,35 @@
+Lookup
+    Segue o padrão dos outros métodos (match...), ou seja, é seguido de um objeto
+    Simples: A partir de um determinado id
+
+
+db.empresas.aggregate([
+    {$match: {nome: "Bradesco"}},
+    {$lookup: {
+        from: "estados", // A COLLECTION onde será buscado dados
+        localField: "estadoId", // Field da COLLECTION atual, no caso, empresas
+        foreignField: "_id", // Field _id da COLLECTION presente no from
+        as: "estado", // Nome do atributo que será criado para trazer as informações
+    }},
+    {$unwind: "$estado"} // Remove os estado de dentro do Array, se tivesse dois
+                            // elementos no Array geraria dois objetos empresas
+]).pretty()
+
+db.empresas.aggregate([
+    {$match: {nome: "Vale"}},
+    {$lookup: {
+        from: "estados",
+        localField: "cidadeId", // Nesse caso não se utiliza o dólar para interpolação
+                                    // pois já é esperado um atributo
+        foreignField: "cidades._id", // Dessa forma o lookup trás o Document que possui o
+                                        // localField == foreignField, não somente a cidade
+        as: "estado"
+    }},
+    {$unwind: "$estado"},
+    {$unwind: "$estado.cidades"},
+    // {$match: {"estado.cidades._id": "$cidadeId"}} // Dessa forma não funciona, retorna Empty
+                                                        // Penso que o motivo seja... ??
+    // cmp nesse caso mas uma comparação, retornado -1, 0 ou 1.
+    {$addFields: {mesmaCidade: {$cmp: ["$estado.cidades._id", "$cidadeId"]}}},
+    {$match: {mesmaCidade: 0}}
+]).pretty()
